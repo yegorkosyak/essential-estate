@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles/normalize/normalize.css";
+import { theme } from "./styles/utility/global-theme.mjs";
+import { device } from "./styles/utility/media-breakpoints.mjs";
+
+import styled, { ThemeProvider } from "styled-components";
+
+import Header from "./components/header/Header";
+import Hero from "./components/hero/Hero";
+import About from "./components/about/About";
+import Portfolio from "./components/portfolio/Portfolio";
+import Agents from "./components/agents/Agents";
+import Contact from "./components/contact/Contact";
+import Footer from "./components/footer/Footer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <StyledApp>
+        <Header />
+        <MainContainer>
+          <Hero />
+          <About />
+          <Portfolio />
+          <Agents />
+          <Contact />
+        </MainContainer>
+        <Footer />
+      </StyledApp>
+    </ThemeProvider>
   );
 }
 
 export default App;
+
+const StyledApp = styled.div`
+  width: 100%;
+  min-height: 100vh;
+  background-color: ${(props) => props.theme.brandBlack};
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-size: ${(props) => props.theme.baseFontSize};
+  @media ${device.tablet} {
+    padding: 10px;
+  }
+  @media ${device.mobileL} {
+    padding: 5px;
+  }
+`;
+const MainContainer = styled.main`
+  width: 100%;
+  height: 100%;
+`;
