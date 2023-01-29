@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 export default function Card({ image, title, area, price, level, room }) {
+  const { t } = useTranslation();
   return (
     <CardContainer>
       <CardImage src={image} alt="" />
@@ -9,21 +11,21 @@ export default function Card({ image, title, area, price, level, room }) {
         <TableBody>
           <TableRow>
             <TableCol>
-              <CellName>area</CellName>
+              <CellName>{t("Portfolio.Area")}</CellName>
               <CellValue>{area}</CellValue>
             </TableCol>
             <TableCol>
-              <CellName>price</CellName>
+              <CellName>{t("Portfolio.Price")}</CellName>
               <CellValue>{price}</CellValue>
             </TableCol>
           </TableRow>
           <TableRow>
             <TableCol>
-              <CellName>level</CellName>
+              <CellName>{t("Portfolio.Level")}</CellName>
               <CellValue>{level}</CellValue>
             </TableCol>
             <TableCol>
-              <CellName>rooms number</CellName>
+              <CellName>{t("Portfolio.Rooms")}</CellName>
               <CellValue>{room}</CellValue>
             </TableCol>
           </TableRow>
@@ -35,7 +37,6 @@ export default function Card({ image, title, area, price, level, room }) {
 
 const CardContainer = styled.div`
   width: 100%;
-  min-height: 540px;
   background-color: ${(props) => props.theme.brandBlack};
   border: 5px solid ${(props) => props.theme.brandBlack};
 `;

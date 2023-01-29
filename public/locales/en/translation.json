@@ -1,0 +1,46 @@
+{
+  "Header": {
+    "About": "About",
+    "Portfolio": "Portfolio",
+    "Agents": "Agents",
+    "Contact": "Contact"
+  },
+  "Hero": {
+    "Title": "We guarantee a full range of services",
+    "Subtitle": "Thanks to deep analytics and market research, we have a clear understanding of what the client needs."
+  },
+  "About": {
+    "Title": "About",
+    "Subtitle1": "Time saving",
+    "Text1": "Ease of preparing documents: clients do not have problems with the preparation and execution of a transaction, they know in advance which documents will be needed at what stage.",
+    "Subtitle2": "Online communication",
+    "Text2": "Online services and the introduction of new products - everything is done for the comfort of the client and increasing the quality and speed of the service.",
+    "Subtitle3": "Quality content",
+    "Text3": "We understand how important real images are, we value the time of our clients, so we are working on continuous improvement of media content."
+  },
+  "Portfolio": {
+    "Title": "Portfolio",
+    "Area": "area",
+    "Price": "price",
+    "Level": "level",
+    "Rooms": "rooms number"
+  },
+  "Agents": {
+    "Title": "Agents",
+    "Comment1": "We understand how important real results are, we value the time of clients, therefore we are working on continuous improvement of media content",
+    "Comment2": "The client of the company has no anxiety about the result during the transaction and after, we guarantee high quality services at all stages of interaction with the client",
+    "Comment3": "High-quality photos, videos, layouts and a detailed description of each of the objects are presented in social networks"
+  },
+  "Contact": {
+    "Title": "Contact",
+    "Subtitle": "Let us help you find the space of dream",
+    "Phone": "Phone",
+    "Social": "Social links",
+    "Email": "Email"
+  },
+  "Footer": {
+    "About": "About",
+    "Portfolio": "Portfolio",
+    "Agents": "Agents"
+  }
+}

@@ -2,6 +2,10 @@ import "./styles/normalize/normalize.css";
 import { theme } from "./styles/utility/global-theme.mjs";
 import { device } from "./styles/utility/media-breakpoints.mjs";
 
+import { useState } from "react";
+import i18n from "i18next";
+import LocaleContext from "./LocaleContext.js";
+
 import styled, { ThemeProvider } from "styled-components";
 
 import Header from "./components/header/Header";
@@ -13,20 +17,23 @@ import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
 
 function App() {
+  const [locale, setLocale] = useState(i18n.language);
   return (
-    <ThemeProvider theme={theme}>
-      <StyledApp>
-        <Header />
-        <MainContainer>
-          <Hero />
-          <About />
-          <Portfolio />
-          <Agents />
-          <Contact />
-        </MainContainer>
-        <Footer />
-      </StyledApp>
-    </ThemeProvider>
+    <LocaleContext.Provider value={{ locale, setLocale }}>
+      <ThemeProvider theme={theme}>
+        <StyledApp>
+          <Header />
+          <MainContainer>
+            <Hero />
+            <About />
+            <Portfolio />
+            <Agents />
+            <Contact />
+          </MainContainer>
+          <Footer />
+        </StyledApp>
+      </ThemeProvider>
+    </LocaleContext.Provider>
   );
 }
 

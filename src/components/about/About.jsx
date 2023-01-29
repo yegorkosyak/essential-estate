@@ -10,16 +10,19 @@ import breakLeft from "../../assets/svg/section-break/diamond-break-left.svg";
 import { theme } from "../../styles/utility/global-theme.mjs";
 import { device } from "../../styles/utility/media-breakpoints.mjs";
 
-const AboutSection = ({ reverse, image }) => {
+import { useTranslation } from "react-i18next";
+
+const AboutSection = ({ reverse, image, part1, part2 }) => {
+  const { t } = useTranslation();
   return (
     <ContentContainer reverse={reverse}>
       <ImageWrap image={image}></ImageWrap>
       <ContentWrap>
-        <ContentTitle color={theme.brandWhite}>Time saving</ContentTitle>
+        <ContentTitle color={theme.brandWhite}>
+          {t(`About.${part1}`)}
+        </ContentTitle>
         <ContentText color={theme.brandWhite}>
-          Ease of preparing documents: clients do not have problems with the
-          preparation and execution of a transaction, they know in advance which
-          documents will be needed at what stage.
+          {t(`About.${part2}`)}
         </ContentText>
       </ContentWrap>
     </ContentContainer>
@@ -27,17 +30,23 @@ const AboutSection = ({ reverse, image }) => {
 };
 
 export default function About() {
+  const { t } = useTranslation();
   return (
-    <ContainerAbout>
-      <SectionTitle color={theme.brandWhite}>About</SectionTitle>
+    <ContainerAbout id="about">
+      <SectionTitle color={theme.brandWhite}>{t("About.Title")}</SectionTitle>
 
-      <AboutSection image={aboutTime} />
+      <AboutSection image={aboutTime} part1="Subtitle1" part2="Text1" />
       <SectionBreak svg={breakRight} />
 
-      <AboutSection reverse={true} image={aboutOnline} />
+      <AboutSection
+        reverse={true}
+        image={aboutOnline}
+        part1="Subtitle2"
+        part2="Text2"
+      />
       <SectionBreak svg={breakLeft} />
 
-      <AboutSection image={aboutQuality} />
+      <AboutSection image={aboutQuality} part1="Subtitle3" part2="Text3" />
     </ContainerAbout>
   );
 }
@@ -45,6 +54,7 @@ export default function About() {
 const ContainerAbout = styled.section`
   max-width: 1280px;
   margin: 0 auto;
+  padding: 30px 0;
 `;
 
 const ContentContainer = styled.div`
@@ -68,6 +78,22 @@ const ImageWrap = styled.div`
   background: center/cover no-repeat url(${(props) => props.image});
   border-radius: 40px;
   box-shadow: 0px 0px 30px -5px rgba(255, 255, 255, 0.5);
+  @media ${device.laptop} {
+    min-width: 50%;
+    min-height: 320px;
+  }
+  @media ${device.tablet} {
+    width: 50%;
+    margin: 0 auto;
+    min-height: 220px;
+  }
+  @media ${device.tabletS} {
+    width: 70%;
+    height: 280px;
+  }
+  @media ${device.mobileL} {
+    height: 220px;
+  }
 `;
 
 const ContentWrap = styled.div`

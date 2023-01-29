@@ -1,0 +1,46 @@
+{
+  "Header": {
+    "About": "O nas",
+    "Portfolio": "Portfolio",
+    "Agents": "Agenty",
+    "Contact": "Kontakt"
+  },
+  "Hero": {
+    "Title": "Gwarantujemy pełen zakres usług",
+    "Subtitle": "Dzięki głębokiej analityce i badaniom rynku mamy jasne zrozumienie potrzeb klienta."
+  },
+  "About": {
+    "Title": "O nas",
+    "Subtitle1": "Oszczędność czasu",
+    "Text1": "Łatwość przygotowania dokumentów: klienci nie mają problemów z przygotowaniem i realizacją transakcji, wiedzą z góry jakie dokumenty będą potrzebne na jakim etapie.",
+    "Subtitle2": "Komunikacja przez Internet",
+    "Text2": "Usługi online oraz wprowadzanie nowych produktów - wszystko odbywa się w trosce o komfort klienta oraz podniesienie jakości i szybkości obsługi.",
+    "Subtitle3": "Jakość treści",
+    "Text3": "Rozumiemy, jak ważne są realne obrazy, cenimy czas naszych klientów, dlatego pracujemy nad ciągłym ulepszaniem treści multimedialnych."
+  },
+  "Portfolio": {
+    "Title": "Portfolio",
+    "Area": "powierzchnia",
+    "Price": "cena",
+    "Level": "poziom",
+    "Rooms": "liczba pokoi"
+  },
+  "Agents": {
+    "Title": "Agenty",
+    "Comment1": "Rozumiemy, jak ważne są realne wyniki, cenimy czas klientów, dlatego pracujemy nad ciągłym ulepszaniem treści multimedialnych",
+    "Comment2": "Klient firmy nie ma obaw o wynik w trakcie transakcji i po niej, gwarantujemy wysoką jakość usług na wszystkich etapach interakcji z klientem",
+    "Comment3": "Wysokiej jakości zdjęcia, filmy, układy i szczegółowy opis każdego z obiektów prezentowane są w sieciach społecznościowych."
+  },
+  "Contact": {
+    "Title": "Kontakt",
+    "Subtitle": "Pomożemy Ci znaleźć przestrzeń marzeń",
+    "Phone": "Telefon",
+    "Social": "Linki społecznościowe",
+    "Email": "Email"
+  },
+  "Footer": {
+    "About": "O nas",
+    "Portfolio": "Portfolio",
+    "Agents": "Agenty"
+  }
+}

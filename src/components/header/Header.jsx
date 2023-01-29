@@ -1,46 +1,185 @@
 import styled from "styled-components";
+import { useState, useContext } from "react";
 
 import logo from "../../assets/logo/logo.png";
 import { device } from "../../styles/utility/media-breakpoints.mjs";
 
+import { useTranslation } from "react-i18next";
+import LocaleContext from "../../LocaleContext.js";
+import i18n from "i18next";
+
 export default function Header() {
+  let { locale, setLocale } = useContext(LocaleContext);
+  const [selectOpen, setSelectOpen] = useState(false);
+  const defaultLocale = ["en", "uk", "pl", "ru"];
+  const fillLocaleSelect = (locale = "en") => {
+    return defaultLocale.filter((elem) => elem !== locale);
+  };
+  let [localeList, setLocaleList] = useState(fillLocaleSelect());
+
+  function changeLocale(l) {
+    if (locale !== l) {
+      i18n.changeLanguage(l);
+    }
+  }
+  const { t } = useTranslation();
+  const [navOpen, setNavOpen] = useState(false);
+  const scrollToSection = (section) => {
+    document.getElementById(section).scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
   return (
     <ContainerHeader>
-      <Logo src={logo} alt=""></Logo>
+      <LocaleToggle
+        onClick={() => setSelectOpen(!selectOpen)}
+        navOpen={navOpen}
+      >
+        {locale.toUpperCase()}
+        <LocaleSelect selectOpen={selectOpen}>
+          {localeList &&
+            localeList.map((elem, idx) => {
+              let upper = elem.toUpperCase();
+              return (
+                <Locale
+                  key={idx}
+                  onClick={() => {
+                    setLocaleList(fillLocaleSelect(elem));
+                    setLocale(elem);
+                    changeLocale(elem);
+                  }}
+                >
+                  {upper}
+                </Locale>
+              );
+            })}
+        </LocaleSelect>
+      </LocaleToggle>
+      <Logo src={logo} alt="" />
       <Nav>
-        <Link>About</Link>
-        <Link>Portfolio</Link>
-        <Link>Agents</Link>
-        <ContactLink>Contact</ContactLink>
+        <Link onClick={() => scrollToSection("about")}>
+          {t("Header.About")}
+        </Link>
+        <Link onClick={() => scrollToSection("portfolio")}>
+          {t("Header.Portfolio")}
+        </Link>
+        <Link onClick={() => scrollToSection("agents")}>
+          {t("Header.Agents")}
+        </Link>
+        <ContactLink onClick={() => scrollToSection("contact")}>
+          {t("Header.Contact")}
+        </ContactLink>
       </Nav>
-      <BurgerNav>
-        <BurgerNavWrap>
+      <BurgerButton onClick={() => setNavOpen(!navOpen)} navOpen={navOpen}>
+        <BurgerNavWrap navOpen={navOpen}>
           <BurgerDash />
           <BurgerDash />
           <BurgerDash />
         </BurgerNavWrap>
-      </BurgerNav>
+      </BurgerButton>
+      <BurgerMenu navOpen={navOpen}>
+        <BurgerNav>
+          <BurgerLink
+            onClick={() => {
+              scrollToSection("about");
+              setNavOpen(!navOpen);
+            }}
+          >
+            {t("Header.About")}
+          </BurgerLink>
+          <BurgerLink
+            onClick={() => {
+              scrollToSection("portfolio");
+              setNavOpen(!navOpen);
+            }}
+          >
+            {t("Header.Portfolio")}
+          </BurgerLink>
+          <BurgerLink
+            onClick={() => {
+              scrollToSection("agents");
+              setNavOpen(!navOpen);
+            }}
+          >
+            {t("Header.Agents")}
+          </BurgerLink>
+          <BurgerLink
+            onClick={() => {
+              scrollToSection("contact");
+              setNavOpen(!navOpen);
+            }}
+          >
+            {t("Header.Contact")}
+          </BurgerLink>
+        </BurgerNav>
+      </BurgerMenu>
     </ContainerHeader>
   );
 }
 
 const ContainerHeader = styled.header`
   width: auto;
-  margin: 0 auto;
   height: 100px;
   background-color: ${(props) => props.theme.brandWhite};
   padding: 0 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-top: 1px solid ${(props) => props.theme.brandBlack};
   border-bottom: 1px solid ${(props) => props.theme.brandBlack};
   position: relative;
+  @media ${device.tablet} {
+    position: fixed;
+    padding: 0 20px;
+    z-index: 1;
+    left: 10px;
+    right: 10px;
+    box-sizing: border-box;
+  }
+  @media ${device.mobileL} {
+    left: 5px;
+    right: 5px;
+    height: 60px;
+  }
+`;
+
+const LocaleToggle = styled.span`
+  font-size: 1.2rem;
+  font-weight: ${(props) => props.theme.weightXLight};
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  cursor: pointer;
+  z-index: 2;
   @media ${device.laptop} {
+    display: ${(props) => (props.navOpen === true ? "block" : "none")};
+  }
+  @media ${device.mobileL} {
+    left: unset;
+    right: 35%;
+  }
+`;
+
+const LocaleSelect = styled.div`
+  display: ${(props) => (props.selectOpen === true ? "block" : "none")};
+  position: absolute;
+  left: -30%;
+  top: 100%;
+`;
+const Locale = styled.div`
+  padding: 0.5rem;
+  background-color: ${(props) => props.theme.brandWhite};
+  &:hover {
+    opacity: 0.9;
   }
 `;
 
 const Logo = styled.img`
   width: 150px;
+  @media ${device.mobileL} {
+    width: 100px;
+  }
 `;
 
 const Nav = styled.ul`
@@ -56,11 +195,13 @@ const Nav = styled.ul`
 const Link = styled.li`
   font-size: 1.5rem;
   font-weight: ${(props) => props.theme.weightXLight};
+  cursor: pointer;
 `;
 
 const ContactLink = styled(Link)`
-  color: white;
+  color: ${(props) => props.theme.brandWhite};
   position: relative;
+  cursor: pointer;
   &:before {
     content: "";
     position: absolute;
@@ -75,7 +216,7 @@ const ContactLink = styled(Link)`
   }
 `;
 
-const BurgerNav = styled.div`
+const BurgerButton = styled.div`
   display: none;
   position: absolute;
   width: 180px;
@@ -83,11 +224,15 @@ const BurgerNav = styled.div`
   background-color: ${(props) => props.theme.brandBlack};
   border-radius: 50%;
   right: 5%;
-  z-index: 1;
+  z-index: 2;
   justify-content: center;
   align-items: center;
   @media ${device.laptop} {
     display: flex;
+  }
+  @media ${device.mobileL} {
+    width: 80px;
+    height: 80px;
   }
 `;
 
@@ -96,10 +241,59 @@ const BurgerNavWrap = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  div:nth-child(1) {
+    transition: all 1000ms;
+    transform: ${(props) =>
+      props.navOpen
+        ? "translateY(5px) rotate(45deg)"
+        : "translateY(0) rotate(0)"};
+  }
+  div:nth-child(2) {
+    transition: all 1000ms;
+    opacity: ${(props) => (props.navOpen ? "0" : "1")};
+  }
+  div:nth-child(3) {
+    transition: all 1000ms;
+    transform: ${(props) =>
+      props.navOpen
+        ? "translateY(-5px) rotate(-45deg)"
+        : "translateY(0) rotate(0)"};
+  }
 `;
 
 const BurgerDash = styled.div`
   width: 80px;
   height: 1px;
   background-color: ${(props) => props.theme.brandWhite};
+
+  @media ${device.mobileL} {
+    width: 40px;
+  }
+`;
+
+const BurgerMenu = styled.div`
+  display: none;
+  @media ${device.laptop} {
+    padding-top: 30px;
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: ${(props) => props.theme.brandWhite};
+    left: 0;
+    top: 0;
+    transform: ${(props) =>
+      props.navOpen ? "translateX(0%)" : "translateX(-100%)"};
+    transition: all 1000ms;
+    z-index: 1;
+  }
+`;
+
+const BurgerNav = styled.ul`
+  list-style-type: none;
+`;
+
+const BurgerLink = styled.li`
+  font-size: 1.5rem;
+  font-weight: ${(props) => props.theme.weightXLight};
 `;

@@ -7,4 +7,6 @@ export const SectionTitle = styled.h2`
   font-weight: ${(props) => props.theme.weightLight};
   text-transform: uppercase;
   text-align: center;
+  mix-blend-mode: ${(props) =>
+    props.blendMode === "difference" ? "difference" : "unset"};
 `;
