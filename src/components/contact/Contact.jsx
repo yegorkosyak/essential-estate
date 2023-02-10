@@ -6,7 +6,6 @@ import { device } from "../../styles/utility/media-breakpoints.mjs";
 
 import romb from "../../assets/images/contact/romb.png";
 import telegram from "../../assets/svg/telegram.svg";
-import whatsapp from "../../assets/svg/whatsapp.svg";
 
 import { useTranslation } from "react-i18next";
 
@@ -30,13 +29,19 @@ export default function Contact() {
             </DetailWrap>
             <DetailWrap>
               <DetailTitle>{t(`Contact.Social`)}</DetailTitle>
-              <Detail href="">Facebook</Detail>
-              <Detail href="">Instagram</Detail>
-              <Detail href="">Google</Detail>
+              <Detail href="https://www.facebook.com/profile.php?id=100084114831847">
+                Facebook
+              </Detail>
+              <Detail href="https://instagram.com/essential.estate_?igshid=YmMyMTA2M2Y=">
+                Instagram
+              </Detail>
+              {/* <Detail href="">Google</Detail> */}
             </DetailWrap>
             <DetailWrap>
               <DetailTitle>{t(`Contact.Email`)}</DetailTitle>
-              <Detail>someessential@gmail.com</Detail>
+              <Detail href="mailto:essential_state@ukr.net">
+                essential_state@ukr.net
+              </Detail>
             </DetailWrap>
           </DetailContainer>
           <LinksContainer>
@@ -51,22 +56,6 @@ export default function Contact() {
               <LinkName>Telegram</LinkName>
             </LinkWrap>
           </LinksContainer>
-          <FormContainer>
-            <FormTitle>Fill out the feedback form</FormTitle>
-            <Form
-              action="mailto:yegorkosyak32@gmail.com"
-              method="post"
-              enctype="text/plain"
-            >
-              <Lablel htmlFor="full-name">Full Name</Lablel>
-              <TextInput type="text" name="full-name" />
-              <Lablel htmlFor="phone">Phone</Lablel>
-              <TextInput type="number" name="phone" />
-              <Lablel htmlFor="Message">Ask a question</Lablel>
-              <Textarea name="message" placeholder="Optional" rows="5" />
-              <FormButton type="submit" value="Submit" />
-            </Form>
-          </FormContainer>
         </ContactContainer>
       </LayoutContainer>
     </ContactSection>
@@ -90,7 +79,7 @@ const ContactContainer = styled.div`
     "title contact"
     "links contact";
   grid-template-columns: 1.5fr 1fr;
-  grid-template-rows: 1fr 0.5fr 1.5fr;
+  grid-template-rows: 1fr 0.5fr;
   @media ${device.laptop} {
     padding: 20px;
     grid-template-columns: 0.5fr 1fr;
@@ -215,61 +204,4 @@ const LinkName = styled.p`
   color: ${(props) => props.theme.brandWhite};
   font-size: 1.5rem;
   font-weight: ${(props) => props.theme.weightLight};
-`;
-
-const FormContainer = styled.div`
-  grid-column-start: 1;
-  grid-column-end: 3;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const FormTitle = styled.div`
-  color: ${(props) => props.theme.brandWhite};
-  margin-bottom: 1rem;
-  font-size: 1.6rem;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  @media ${device.tablet} {
-    width: 100%;
-  }
-`;
-
-const TextInput = styled.input`
-  margin-bottom: 1rem;
-  height: 2rem;
-  background-color: ${(props) => props.theme.brandBlack};
-  color: ${(props) => props.theme.brandWhite};
-  border: 0.5px solid ${(props) => props.theme.brandWhite};
-  padding: 0.5rem;
-`;
-
-const Textarea = styled.textarea`
-  background-color: ${(props) => props.theme.brandBlack};
-  color: ${(props) => props.theme.brandWhite};
-  border-color: ${(props) => props.theme.brandWhite};
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-`;
-
-const Lablel = styled.label`
-  color: ${(props) => props.theme.brandWhite};
-  margin-bottom: 0.5rem;
-`;
-
-const FormButton = styled.input`
-  height: 3rem;
-  width: 50%;
-  background-color: ${(props) => props.theme.brandWhite};
-  margin: 0 auto;
-  font-size: 1.5rem;
-  @media ${device.tablet} {
-    width: 100%;
-  }
 `;

@@ -19,6 +19,8 @@ export default function Footer() {
         <br />
         <br /> */}
         @2022, ONO
+        <br />
+        NIP 9452259818
       </Terms>
       <NavLinks>
         <Link onClick={() => scrollToSection("about")}>

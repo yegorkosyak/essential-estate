@@ -10,6 +10,7 @@ import styled, { ThemeProvider } from "styled-components";
 
 import Header from "./components/header/Header";
 import Hero from "./components/hero/Hero";
+import FormComponent from "./components/form/FormComponent";
 import About from "./components/about/About";
 import Portfolio from "./components/portfolio/Portfolio";
 import Agents from "./components/agents/Agents";
@@ -25,6 +26,7 @@ function App() {
           <Header />
           <MainContainer>
             <Hero />
+            <FormComponent />
             <About />
             <Portfolio />
             <Agents />
