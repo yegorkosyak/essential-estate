@@ -9,6 +9,14 @@
     "Title": "We guarantee a full range of services",
     "Subtitle": "Thanks to deep analytics and market research, we have a clear understanding of what the client needs."
   },
+  "FormComponent": {
+    "Title": "Need a help?",
+    "FullName": "Full Name",
+    "PhoneNumber": "Phone",
+    "Message": "Ask a question",
+    "Optional": "Optional",
+    "Button": "Submit"
+  },
   "About": {
     "Title": "About",
     "Subtitle1": "Time saving",

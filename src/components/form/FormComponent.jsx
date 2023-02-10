@@ -17,7 +17,7 @@ export default function FormComponent() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    send("service_ntio5jp", "template_49yxbqm", toSend, "dh680qjjcTiFjyz6L")
+    send("service_cjp14eh", "template_49yxbqm", toSend, "dh680qjjcTiFjyz6L")
       .then((response) => {
         console.log("SUCCESS!", response.status, response.text);
       })
@@ -32,9 +32,9 @@ export default function FormComponent() {
   return (
     <FormSection id="form">
       <FormContainer>
-        <FormTitle>Fill out the feedback form</FormTitle>
+        <FormTitle>{t(`FormComponent.Title`)}</FormTitle>
         <Form method="post" enctype="text/plain" onSubmit={onSubmit}>
-          <Lablel htmlFor="full-name">Full Name</Lablel>
+          <Lablel htmlFor="full-name">{t(`FormComponent.FullName`)}</Lablel>
           <TopTextInput
             type="text"
             name="full_name"
@@ -42,7 +42,9 @@ export default function FormComponent() {
             value={toSend.full_name}
             onChange={handleChange}
           />
-          <Lablel htmlFor="phone-number">Phone</Lablel>
+          <Lablel htmlFor="phone-number">
+            {t(`FormComponent.PhoneNumber`)}
+          </Lablel>
           <TextInput
             type="number"
             name="phone_number"
@@ -50,16 +52,16 @@ export default function FormComponent() {
             value={toSend.phone_number}
             onChange={handleChange}
           />
-          <Lablel htmlFor="message">Ask a question</Lablel>
+          <Lablel htmlFor="message">{t(`FormComponent.Message`)}</Lablel>
           <Textarea
             name="message"
             id="message"
-            placeholder="Optional"
+            placeholder={t(`FormComponent.Optional`)}
             rows="10"
             value={toSend.message}
             onChange={handleChange}
           />
-          <FormButton type="submit" value="Submit" />
+          <FormButton type="submit" value={t(`FormComponent.Button`)} />
         </Form>
       </FormContainer>
     </FormSection>

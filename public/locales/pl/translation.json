@@ -9,6 +9,14 @@
     "Title": "Gwarantujemy pełen zakres usług",
     "Subtitle": "Dzięki głębokiej analityce i badaniom rynku mamy jasne zrozumienie potrzeb klienta."
   },
+  "FormComponent": {
+    "Title": "Potrzebujesz pomocy?",
+    "FullName": "Imię i nazwisko",
+    "PhoneNumber": "Telefon",
+    "Message": "Zadaj pytanie",
+    "Optional": "Opcjonalnie",
+    "Button": "Wyślij"
+  },
   "About": {
     "Title": "O nas",
     "Subtitle1": "Oszczędność czasu",
