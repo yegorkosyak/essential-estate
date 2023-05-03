@@ -2,7 +2,7 @@
   "Header": {
     "About": "O nas",
     "Portfolio": "Portfolio",
-    "Agents": "Agenty",
+    "Agents": "Agenci",
     "Contact": "Kontakt"
   },
   "Hero": {
@@ -34,10 +34,15 @@
     "Rooms": "liczba pokoi"
   },
   "Agents": {
-    "Title": "Agenty",
-    "Comment1": "Rozumiemy, jak ważne są realne wyniki, cenimy czas klientów, dlatego pracujemy nad ciągłym ulepszaniem treści multimedialnych",
-    "Comment2": "Klient firmy nie ma obaw o wynik w trakcie transakcji i po niej, gwarantujemy wysoką jakość usług na wszystkich etapach interakcji z klientem",
-    "Comment3": "Wysokiej jakości zdjęcia, filmy, układy i szczegółowy opis każdego z obiektów prezentowane są w sieciach społecznościowych."
+    "Title": "Agenci",
+    "Andrew": " młoda agentka nieruchomości, która pracuje z osobami poszukującymi domów i mieszkań. Zawsze jest gotowy wysłuchać życzeń swoich klientów i pomóc im znaleźć idealny dom.Andrey ma dobre umiejętności komunikacyjne, które pozwalają mu łatwo nawiązać kontakt z potencjalnymi klientami i zapewnić im profesjonalną obsługę.",
+    "AndrewQuote": "`Niezawodny partner w drodze do Twojego marzenia!`",
+    "Elizaveta": " doświadczona agentka nieruchomości, która uważnie śledzi trendy rynkowe i posiada dobre umiejętności negocjacyjne, które pomagają jej w zawieraniu udanych transakcji.Elizaveta dba o to, aby każdy klient otrzymał obiektywną informację o kosztach obiektów oraz informacje o wszystkich kwestiach prawnych, technicznych i finansowych. Elizaveta jest nastawiona na sukces swoich klientów, dlatego zawsze pracuje, dopóki nie znajdzie odpowiedniej nieruchomości dla swoich klientów.",
+    "ElizavetaQuote": "`Każda rodzina powinna mieć swój własny dom. Zaufaj mi, pomogę ci!`",
+    "Polina": " doświadczona pośredniczka w obrocie nieruchomościami, doskonale zna rynek nieruchomości i zawsze jest gotowa odpowiedzieć na wszelkie pytania kupujących. Polina dokłada wszelkich starań, aby sprostać wymaganiom swoich klientów i zawsze stara się znaleźć najkorzystniejsze rozwiązanie dla każdej ze stron.Polina ma bogate doświadczenie w pracy z rodzinami poszukującymi dużych domów z przestronnym podwórkiem i możliwością parkowania, zawsze służy gotowa zaoferować swoim klientom szeroką gamę domów, mieszkań, biur, gruntów do wynajęcia/sprzedaży, uwzględniając ich potrzeby i budżet swoich klientów.",
+    "PolinaQuote": "`Duże doświadczenie i profesjonalizm w każdej transakcji dotyczącej nieruchomości`",
+    "Viacheslav": " Młody agent nieruchomości Wiaczesław uważa, że ​​odpowiednie mieszkanie powinno pasować do stylu życia klienta i zapewniać komfort mieszkania. Każdemu klientowi poświęca należytą uwagę, zbiera informacje o jego preferencjach i budżecie, a także służy radą we wszystkich kwestiach.Wiaczesław oferuje swoim klientom również dodatkowe usługi w zakresie dekorowania i projektowania wnętrz.",
+    "ViacheslavQuote": "`Zawsze znajdę dla Ciebie idealny dom!`"
   },
   "Contact": {
     "Title": "Kontakt",
@@ -49,6 +54,6 @@
   "Footer": {
     "About": "O nas",
     "Portfolio": "Portfolio",
-    "Agents": "Agenty"
+    "Agents": "Agenci"
   }
 }

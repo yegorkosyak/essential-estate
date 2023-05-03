@@ -37,8 +37,8 @@ const ContainerHero = styled.section`
     height: 300px;
     border-radius: 50%;
     background-color: #0d0e11;
-    top: 70%;
-    right: -90px;
+    top: 75%;
+    right: -110px;
     z-index: -1;
   }
 `;

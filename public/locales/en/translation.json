@@ -35,9 +35,14 @@
   },
   "Agents": {
     "Title": "Agents",
-    "Comment1": "We understand how important real results are, we value the time of clients, therefore we are working on continuous improvement of media content",
-    "Comment2": "The client of the company has no anxiety about the result during the transaction and after, we guarantee high quality services at all stages of interaction with the client",
-    "Comment3": "High-quality photos, videos, layouts and a detailed description of each of the objects are presented in social networks"
+    "Andrew": " a young real estate agent who works with people looking for houses and apartments. He is always ready to listen to the wishes of his clients and help them find the ideal accommodation. Andriy has good communication skills that allow him to easily connect with potential clients and provide them with a professional service.",
+    "AndrewQuote": "`Reliable partner on the way to your dream!`",
+    "Elizaveta": " an experienced real estate agent who closely monitors market trends and has good negotiation skills that help her conclude successful transactions. Elizaveta makes sure that each client receives objective information about the cost of objects and information on all legal, technical and financial issues. Elizaveta is focused on the success of her clients, so she always works until she finds the right property for her clients.",
+    "ElizavetaQuote": "`Every family should have their own home. Trust me, I will help you!`",
+    "Polina": " an experienced real estate agent, she is well acquainted with the real estate market and is always ready to answer any questions from buyers. Polina makes every effort to meet the needs of her clients and always tries to find the most profitable solution for each party. Polina has a wealth of experience working with families looking for large houses with a spacious yard and the possibility of parking, she is always ready to offer her clients a wide range of houses, apartments, offices, land for rent / sale, taking into account their needs and the budget of their clients.",
+    "PolinaQuote": "`Great experience and professionalism in every real estate transaction`",
+    "Viacheslav": " a young real estate agent, Vyacheslav, believes that the right housing should match the client's lifestyle and provide comfortable living. He pays due attention to each client, collecting information about their preferences and budget, and also provides advice on all issues. Vyacheslav also offers his clients additional services in decorating and interior design.",
+    "ViacheslavQuote": "`I will always find the perfect home for you!`"
   },
   "Contact": {
     "Title": "Contact",

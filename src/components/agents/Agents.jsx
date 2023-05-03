@@ -1,104 +1,68 @@
 import styled from "styled-components";
+import { useEffect, createRef } from "react";
 
 import { SectionTitle } from "../../styles/components/Title";
 
 import { theme } from "../../styles/utility/global-theme.mjs";
 import { device } from "../../styles/utility/media-breakpoints.mjs";
-import AgentImage1 from "../../assets/images/agents/woman1.png";
-import AgentImage2 from "../../assets/images/agents/woman2.png";
-import AgentImage3 from "../../assets/images/agents/man1.png";
-// import AgentImage4 from "../../assets/images/agents/man2.png";
-// import AgentImage5 from "../../assets/images/agents/man3.png";
+import Andrew from "../../assets/images/agents/andrew.png";
+import Eli from "../../assets/images/agents/eli.png";
+import Polina from "../../assets/images/agents/polina.png";
+import Viacheslav from "../../assets/images/agents/viacheslav.png";
 
 import { useTranslation } from "react-i18next";
-import { useRef, useEffect, useState } from "react";
 
-// import useWindowSize from "../../hooks/useWindowSize";
-
-import anime from "animejs/lib/anime.es.js";
-
-const Agent = ({ image, name, comment }) => {
+const Agent = ({ image, agentName, comment, quote }) => {
   return (
     <AgentBody>
-      <AgentImage src={image} />
-      <AgentName>{name}</AgentName>
-      <AgentComment>
-        <i>{comment}</i>
-      </AgentComment>
+      <Frame>
+        <AgentPhoto src={image} alt={agentName} />
+      </Frame>
+
+      <AgentInfo>
+        <AgentName>{agentName}</AgentName>
+        <AgentComment>{comment}</AgentComment>
+        <Quote>
+          <i>{quote}</i>
+        </Quote>
+      </AgentInfo>
     </AgentBody>
   );
 };
 
 export default function Agents() {
   const { t } = useTranslation();
-
-  // let pixelGrid = useRef(null);
-  // useEffect(() => {
-  //   createGrid(pixelGrid.current);
-  // }, []);
-
-  // const handleOnClick = (index, dimension) => {
-  //   anime({
-  //     targets: ".tile",
-  //     backgroundColor: "#f2f1ee",
-  //     delay: anime.stagger(50, {
-  //       grid: [dimension.columns, dimension.rows],
-  //       from: index,
-  //     }),
-  //   });
-  // };
-
-  // const createTile = (index, dimension) => {
-  //   const tile = document.createElement("div");
-  //   tile.classList.add("tile");
-  //   tile.onclick = (e) => handleOnClick(index, dimension);
-  //   return tile;
-  // };
-
-  // const createTiles = (quantity, wrapper, dimension) => {
-  //   Array.from(Array(quantity)).map((tile, index) => {
-  //     wrapper.appendChild(createTile(index, dimension));
-  //   });
-  // };
-
-  // const createGrid = (wrapper) => {
-  //   wrapper.innerHTML = "";
-  //   let dimension = {
-  //     columns: Math.floor(wrapper.offsetWidth / 50),
-  //     rows: Math.floor(wrapper.offsetHeight / 50),
-  //   };
-  //   wrapper.style.setProperty("--columns", dimension.columns);
-  //   wrapper.style.setProperty("--rows", dimension.rows);
-  //   createTiles(
-  //     dimension.columns * dimension.rows,
-  //     pixelGrid.current,
-  //     dimension
-  //   );
-  // };
-
-  // window.onresize = () => {
-  //   createGrid(pixelGrid.current);
-  // };
-
   return (
     <AgentsContainer id="agents">
-      <PixelGrid id="pixel-grid" /*ref={pixelGrid}*/ />
       <SectionTitle color={theme.brandWhite}>{t(`Agents.Title`)}</SectionTitle>
+
       <AgentsWrap>
         <Agent
-          image={AgentImage1}
-          name="Elizabeth"
-          comment={t(`Agents.Comment1`)}
+          image={Andrew}
+          agentName="Andrew"
+          comment={t(`Agents.Andrew`)}
+          quote={t("Agents.AndrewQuote")}
         />
+
         <Agent
-          image={AgentImage3}
-          name="Dmitry"
-          comment={t(`Agents.Comment2`)}
+          image={Eli}
+          agentName="Elizaveta"
+          comment={t(`Agents.Elizaveta`)}
+          quote={t("Agents.ElizavetaQuote")}
         />
+
         <Agent
-          image={AgentImage2}
-          name="Polina"
-          comment={t(`Agents.Comment3`)}
+          image={Polina}
+          agentName="Polina"
+          comment={t(`Agents.Polina`)}
+          quote={t("Agents.PolinaQuote")}
+        />
+
+        <Agent
+          image={Viacheslav}
+          agentName="Viacheslav"
+          comment={t(`Agents.Viacheslav`)}
+          quote={t("Agents.ViacheslavQuote")}
         />
       </AgentsWrap>
     </AgentsContainer>
@@ -113,30 +77,10 @@ const AgentsContainer = styled.div`
   z-index: 0;
 `;
 
-const PixelGrid = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: -1;
-  display: grid;
-  grid-template-columns: repeat(var(--columns), 1fr);
-  grid-template-rows: repeat(var(--rows), 1fr);
-  .tile {
-    /* border: 0.5px solid white; */
-    &:hover {
-      background-color: white;
-    }
-  }
-`;
-
 const AgentsWrap = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  z-index: 2;
+  flex-direction: column;
   @media ${device.laptop} {
     align-items: center;
     flex-direction: column;
@@ -145,30 +89,63 @@ const AgentsWrap = styled.div`
 `;
 
 const AgentBody = styled.div`
-  max-width: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+
+  gap: 2rem;
+
+  margin-bottom: 4rem;
+  @media ${device.tablet} {
+    grid-template-columns: unset;
+    grid-template-rows: 1fr auto;
+    gap: 0;
+  }
 `;
 
-const AgentImage = styled.img`
-  border: 3px solid ${(props) => props.theme.brandWhite};
-  border-radius: 50%;
-  width: 220px;
-  height: 220px;
+const Frame = styled.div`
+  @media ${device.tablet} {
+    text-align: center;
+  }
+`;
+
+const AgentPhoto = styled.img`
+  width: 100%;
+  @media ${device.tablet} {
+    width: 50%;
+  }
+`;
+
+const AgentInfo = styled.div`
+  align-self: flex-end;
+  @media ${device.tablet} {
+    padding: 2rem;
+  }
 `;
 
 const AgentName = styled.span`
   color: ${(props) => props.theme.brandWhite};
-  font-weight: ${(props) => props.theme.weightLight};
-  font-size: 2rem;
+  font-weight: ${(props) => props.theme.weightBlack};
+  font-size: 1.7rem;
 `;
 
 const AgentComment = styled.span`
-  color: ${(props) => props.theme.brandGrey};
-  font-size: 1.4rem;
-  text-align: center;
+  color: ${(props) => props.theme.brandWhite};
+  font-size: 1.2rem;
   line-height: 130%;
+`;
+
+const Quote = styled.p`
+  color: ${(props) => props.theme.brandGrey};
+  padding-left: 2rem;
+  font-size: 1.3rem;
+  position: relative;
+  &:before {
+    content: "";
+    background-color: ${(props) => props.theme.brandWhite};
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    left: 1rem;
+    top: 0;
+  }
 `;
