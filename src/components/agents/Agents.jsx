@@ -79,22 +79,21 @@ const AgentsContainer = styled.div`
 
 const AgentsWrap = styled.div`
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  @media ${device.laptop} {
-    align-items: center;
-    flex-direction: column;
-    gap: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 3rem;
+  @media ${device.tablet} {
+    grid-template-columns: unset;
+    grid-template-rows: auto;
   }
 `;
 
 const AgentBody = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-
-  gap: 2rem;
-
+  display: flex;
+  flex-direction: column;
   margin-bottom: 4rem;
+  gap: 2rem;
   @media ${device.tablet} {
     grid-template-columns: unset;
     grid-template-rows: 1fr auto;
@@ -109,7 +108,7 @@ const Frame = styled.div`
 `;
 
 const AgentPhoto = styled.img`
-  width: 100%;
+  width: 40%;
   @media ${device.tablet} {
     width: 50%;
   }
