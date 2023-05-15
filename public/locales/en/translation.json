@@ -15,7 +15,8 @@
     "PhoneNumber": "Phone",
     "Message": "Ask a question",
     "Optional": "Optional",
-    "Button": "Submit"
+    "Button": "Submit",
+    "HiddenText": "Thank you! We will contact with you as fast as we could!"
   },
   "About": {
     "Title": "About",

@@ -15,7 +15,8 @@
     "PhoneNumber": "Telefon",
     "Message": "Zadaj pytanie",
     "Optional": "Opcjonalnie",
-    "Button": "Wyślij"
+    "Button": "Wyślij",
+    "HiddenText": "Dziękuję! Skontaktujemy się z Tobą tak szybko, jak to możliwe!"
   },
   "About": {
     "Title": "O nas",
@@ -35,7 +36,7 @@
   },
   "Agents": {
     "Title": "Agenci",
-    "Andrew": " młody agentka nieruchomości, który pracuje z osobami poszukującymi domów i mieszkań. Zawsze jest gotowy wysłuchać życzeń swoich klientów i pomóc im znaleźć idealny dom.Andrey ma dobre umiejętności komunikacyjne, które pozwalają mu łatwo nawiązać kontakt z potencjalnymi klientami i zapewnić im profesjonalną obsługę.",
+    "Andrew": " młody agent nieruchomości, który pracuje z osobami poszukującymi domów i mieszkań. Zawsze jest gotowy wysłuchać życzeń swoich klientów i pomóc im znaleźć idealny dom.Andrey ma dobre umiejętności komunikacyjne, które pozwalają mu łatwo nawiązać kontakt z potencjalnymi klientami i zapewnić im profesjonalną obsługę.",
     "AndrewQuote": "`Niezawodny partner w drodze do Twojego marzenia!`",
     "Elizaveta": " doświadczona agentka nieruchomości, która uważnie śledzi trendy rynkowe i posiada dobre umiejętności negocjacyjne, które pomagają jej w zawieraniu udanych transakcji.Elizaveta dba o to, aby każdy klient otrzymał obiektywną informację o kosztach obiektów oraz informacje o wszystkich kwestiach prawnych, technicznych i finansowych. Elizaveta jest nastawiona na sukces swoich klientów, dlatego zawsze pracuje, dopóki nie znajdzie odpowiedniej nieruchomości dla swoich klientów.",
     "ElizavetaQuote": "`Każda rodzina powinna mieć swój własny dom. Zaufaj mi, pomogę ci!`",

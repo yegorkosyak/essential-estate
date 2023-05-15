@@ -14,12 +14,19 @@ export default function FormComponent() {
     phone_number: "",
     message: "",
   });
+  const [hiddenText, setHiddenText] = useState(true);
 
   const onSubmit = (e) => {
     e.preventDefault();
     send("service_cjp14eh", "template_49yxbqm", toSend, "dh680qjjcTiFjyz6L")
       .then((response) => {
         console.log("SUCCESS!", response.status, response.text);
+        setHiddenText(false);
+        setToSend({
+          full_name: "",
+          phone_number: "",
+          message: "",
+        });
       })
       .catch((err) => {
         console.log("FAILED...", err);
@@ -62,6 +69,9 @@ export default function FormComponent() {
             onChange={handleChange}
           />
           <FormButton type="submit" value={t(`FormComponent.Button`)} />
+          <SubmittionText hidden={hiddenText}>
+            {t(`FormComponent.HiddenText`)}
+          </SubmittionText>
         </Form>
       </FormContainer>
     </FormSection>
@@ -137,4 +147,10 @@ const FormButton = styled.input`
   @media ${device.laptop} {
     width: 70%;
   }
+`;
+
+const SubmittionText = styled.p`
+  text-align: center;
+  font-size: 1.5rem;
+  color: ${(props) => props.theme.brandWhite};
 `;
