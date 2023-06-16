@@ -79,7 +79,7 @@ export default function FormComponent() {
 }
 
 const FormSection = styled.section`
-  padding: 5rem 0;
+  padding: 0 0 5rem;
 `;
 
 const FormContainer = styled.div`

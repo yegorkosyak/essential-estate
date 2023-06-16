@@ -26,10 +26,10 @@ function App() {
           <Header />
           <MainContainer>
             <Hero />
-            <FormComponent />
             <About />
             <Portfolio />
-            <Agents />
+            <Agents locale={locale} />
+            <FormComponent />
             <Contact />
           </MainContainer>
           <Footer />
