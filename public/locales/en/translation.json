@@ -32,7 +32,9 @@
     "Area": "area",
     "Price": "price",
     "Level": "level",
-    "Rooms": "rooms number"
+    "Rooms": "rooms number",
+    "Sale": "Sale",
+    "Rent": "Rent"
   },
   "Agents": {
     "Title": "Agents",

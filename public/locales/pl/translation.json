@@ -32,7 +32,9 @@
     "Area": "powierzchnia",
     "Price": "cena",
     "Level": "poziom",
-    "Rooms": "liczba pokoi"
+    "Rooms": "liczba pokoi",
+    "Sale": "Sprzedaż",
+    "Rent": "Wynajem"
   },
   "Agents": {
     "Title": "Agenci",

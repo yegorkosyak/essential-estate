@@ -11,8 +11,8 @@ import i18n from "i18next";
 export default function Header() {
   let { locale, setLocale } = useContext(LocaleContext);
   const [selectOpen, setSelectOpen] = useState(false);
-  const defaultLocale = ["en", "ua", "pl", "ru"];
-  const fillLocaleSelect = (locale = "en") => {
+  const defaultLocale = ["en", "uk", "pl", "ru"];
+  const fillLocaleSelect = (locale = "pl") => {
     return defaultLocale.filter((elem) => elem !== locale);
   };
   let [localeList, setLocaleList] = useState(fillLocaleSelect());
