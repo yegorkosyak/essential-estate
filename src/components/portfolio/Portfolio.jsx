@@ -181,6 +181,9 @@ const SwitchButton = styled.div`
     z-index: 2;
     mix-blend-mode: difference;
     color: ${(props) => props.theme.brandWhite};
+    @media ${device.mobileL} {
+      font-size: 1rem;
+    }
   }
 
   &::before {

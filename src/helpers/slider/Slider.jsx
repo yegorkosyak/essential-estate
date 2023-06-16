@@ -92,4 +92,7 @@ const SliderContainer = styled.div`
   @media ${device.tablet} {
     width: calc(60vw - 10px);
   }
+  @media ${device.mobileL} {
+    width: calc(90vw - 10px);
+  }
 `;
