@@ -43,7 +43,7 @@ export default function Portfolio() {
     }
     randomValues();
     axios
-      .get("http://localhost:1337/api/apartments?populate=*")
+      .get("https://strapi.essentialestate.link/api/apartments?populate=*")
       .then(({ data }) => {
         setApartments(data.data);
         setApartmentsByListingType(

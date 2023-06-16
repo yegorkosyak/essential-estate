@@ -66,7 +66,9 @@ const Slider = ({ slides }) => {
         {slides.map((slide, i) => (
           <Slide
             key={i}
-            content={"http://localhost:1337" + slide.attributes.url}
+            content={
+              "https://strapi.essentialestate.link" + slide.attributes.url
+            }
             width={slideWidth}
           />
         ))}

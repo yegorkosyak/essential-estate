@@ -33,7 +33,9 @@ export default function Agents({ locale }) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:1337/api/agents?locale=${locale}&populate=*`)
+      .get(
+        `https://strapi.essentialestate.link/api/agents?locale=${locale}&populate=*`
+      )
       .then(({ data }) => {
         setAgents(data.data);
       });
@@ -47,7 +49,8 @@ export default function Agents({ locale }) {
           <Agent
             key={id}
             image={
-              "http://localhost:1337" + attributes.photo.data.attributes.url
+              "https://strapi.essentialestate.link" +
+              attributes.photo.data.attributes.url
             }
             agentName={attributes.name}
             comment={attributes.description}
