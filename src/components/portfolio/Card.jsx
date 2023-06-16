@@ -4,9 +4,7 @@ import { useTranslation } from "react-i18next";
 export default function Card({ image, title, area, price, level, room }) {
   const { t } = useTranslation();
   return (
-    <CardContainer>
-      <CardImage src={image} alt="" />
-      <CardTitle>{title}</CardTitle>
+      <Slider slides={images} />
       <CardTable>
         <TableBody>
           <TableRow>
