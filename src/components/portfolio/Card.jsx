@@ -1,30 +1,44 @@
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+import Slider from "../../helpers/slider/Slider";
 
-export default function Card({ image, title, area, price, level, room }) {
+export default function Card({
+  images,
+  title,
+  area,
+  price,
+  level,
+  room,
+  transformed,
+}) {
   const { t } = useTranslation();
   return (
+    <CardContainer transformed={transformed}>
+      {/* <CardImage src={image} alt="" /> */}
       <Slider slides={images} />
+      <CardTitle transformed={transformed}>{title}</CardTitle>
       <CardTable>
         <TableBody>
           <TableRow>
-            <TableCol>
+            <TableCol transformed={transformed}>
               <CellName>{t("Portfolio.Area")}</CellName>
-              <CellValue>{area}</CellValue>
+              <CellValue transformed={transformed}>{area}</CellValue>
             </TableCol>
-            <TableCol>
+            <TableCol transformed={transformed}>
               <CellName>{t("Portfolio.Price")}</CellName>
-              <CellValue>{price}</CellValue>
+              <CellValue transformed={transformed}>
+                {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              </CellValue>
             </TableCol>
           </TableRow>
           <TableRow>
-            <TableCol>
+            <TableCol transformed={transformed}>
               <CellName>{t("Portfolio.Level")}</CellName>
-              <CellValue>{level}</CellValue>
+              <CellValue transformed={transformed}>{level}</CellValue>
             </TableCol>
-            <TableCol>
+            <TableCol transformed={transformed}>
               <CellName>{t("Portfolio.Rooms")}</CellName>
-              <CellValue>{room}</CellValue>
+              <CellValue transformed={transformed}>{room}</CellValue>
             </TableCol>
           </TableRow>
         </TableBody>
@@ -35,17 +49,18 @@ export default function Card({ image, title, area, price, level, room }) {
 
 const CardContainer = styled.div`
   width: 100%;
-  background-color: ${(props) => props.theme.brandBlack};
-  border: 5px solid ${(props) => props.theme.brandBlack};
-`;
-
-const CardImage = styled.img`
-  width: 100%;
+  background-color: ${(props) =>
+    props.transformed ? props.theme.brandWhite : props.theme.brandBlack};
+  border: 5px solid
+    ${(props) =>
+      props.transformed ? props.theme.brandWhite : props.theme.brandBlack};
+  box-sizing: border-box;
 `;
 
 const CardTitle = styled.p`
   margin-left: 10px;
-  color: ${(props) => props.theme.brandWhite};
+  color: ${(props) =>
+    props.transformed ? props.theme.brandBlack : props.theme.brandWhite};
   font-weight: ${(props) => props.theme.weightXLight};
   font-size: 1.5rem;
 `;
@@ -60,7 +75,9 @@ const TableRow = styled.tr``;
 
 const TableCol = styled.td`
   padding: 10px;
-  border: 1px solid ${(props) => props.theme.brandWhite};
+  border: 1px solid
+    ${(props) =>
+      props.transformed ? props.theme.brandBlack : props.theme.brandWhite};
   width: 50%;
 `;
 
@@ -71,5 +88,6 @@ const CellName = styled.p`
 `;
 const CellValue = styled.p`
   margin: 0;
-  color: ${(props) => props.theme.brandWhite};
+  color: ${(props) =>
+    props.transformed ? props.theme.brandBlack : props.theme.brandWhite};
 `;

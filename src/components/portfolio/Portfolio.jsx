@@ -1,23 +1,23 @@
 import styled from "styled-components";
 
 import { SectionTitle } from "../../styles/components/Title";
-import { LayoutContainer } from "../../styles/components/LayoutContainer";
 import Card from "./Card";
-
-import CardImage1 from "../../assets/images/portfolio/malysiaka/1.jpg";
-import CardImage2 from "../../assets/images/portfolio/soltysowska/1.jpg";
-import CardImage3 from "../../assets/images/portfolio/barbary/1.jpg";
-import CardImage4 from "../../assets/images/portfolio/sliczna/1.jpg";
 
 import { device } from "../../styles/utility/media-breakpoints.mjs";
 
 import { useTranslation } from "react-i18next";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
 import anime from "animejs";
+import axios from "axios";
 
 export default function Portfolio() {
+  const [apartments, setApartments] = useState([]);
+  const [apartmentsByListingType, setApartmentsByListingType] = useState([]);
+  const [transformed, setTransformed] = useState(false);
   const { t } = useTranslation();
   const circleAnime = useRef(null);
+
   function randomValues() {
     anime({
       targets: ".circle",
@@ -34,65 +34,92 @@ export default function Portfolio() {
     });
   }
 
-  useEffect(()=>{
-    const numberOfCircles = 10
-    for (let i = 0; i < numberOfCircles; i++){
-      const circle = document.createElement("div")
-      circle.classList.add("circle")
-      document.getElementById("circle-wrap").append(circle)
+  useEffect(() => {
+    const numberOfCircles = 10;
+    for (let i = 0; i < numberOfCircles; i++) {
+      const circle = document.createElement("div");
+      circle.classList.add("circle");
+      document.getElementById("circle-wrap").append(circle);
     }
     randomValues();
-  },[])
-  
+    axios
+      .get("http://localhost:1337/api/apartments?populate=*")
+      .then(({ data }) => {
+        setApartments(data.data);
+        setApartmentsByListingType(
+          data.data.filter(
+            (apartments) => apartments.attributes.listing_type === "sale"
+          )
+        );
+      });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const changeSwitchState = () => {
+    const switchButton = document.getElementById("switch-button");
+    if (!transformed) {
+      switchButton.style.setProperty("--beforeTransform", "100%");
+      setTransformed(!transformed);
+      setApartmentsByListingType(
+        apartments.filter(
+          (apartments) => apartments.attributes.listing_type === "rent"
+        )
+      );
+    } else {
+      switchButton.style.setProperty("--beforeTransform", "0%");
+      setTransformed(!transformed);
+      setApartmentsByListingType(
+        apartments.filter(
+          (apartments) => apartments.attributes.listing_type === "sale"
+        )
+      );
+    }
+  };
+
   return (
-    <PortfolioSection id="portfolio">
-      <CirclesAnime id="circle-wrap" ref={circleAnime}>
-      </CirclesAnime>
-      <LayoutContainer>
+    <PortfolioSection id="portfolio" transformed={transformed}>
+      <CirclesAnime
+        id="circle-wrap"
+        ref={circleAnime}
+        transformed={transformed}
+      ></CirclesAnime>
+      <PortfolioContainer>
         <SectionTitle blendMode="difference" color="#F2F1EE">
           {t("Portfolio.Title")}
         </SectionTitle>
+        <SwitchButton
+          id="switch-button"
+          onClick={() => changeSwitchState()}
+          transformed={transformed}
+        >
+          <span>{t("Portfolio.Sale")}</span>
+          <span>{t("Portfolio.Rent")}</span>
+        </SwitchButton>
         <PortfolioGrid>
-          <Card
-            image={CardImage1}
-            title={"Kliny Borkowskie, ul. Małysiaka 26"}
-            area={"92m^2"}
-            price={"899 000 PLN"}
-            level={"2 in 5"}
-            room={"3"}
-          />
-          <Card
-            image={CardImage2}
-            title={"Czyżyny, ul. Sołtysowska 37F"}
-            area={"102m^2"}
-            price={"1 099 000 PLN"}
-            level={"1 in 4"}
-            room={"4"}
-          />
-          <Card
-            image={CardImage3}
-            title={"Bieżanów, ul. Barbary 12"}
-            area={"114m^2"}
-            price={"1 050 000 PLN"}
-            level={"3 in 4"}
-            room={"3"}
-          />
-          <Card
-            image={CardImage4}
-            title={"Olsza, ul. Śliczna 36"}
-            area={"133m^2"}
-            price={"1 199 000 PLN"}
-            level={"6 in 6"}
-            room={"4"}
-          />
+          {apartmentsByListingType.map(({ id, attributes }) => (
+            <Card
+              key={id}
+              images={attributes.photos.data}
+              title={attributes.location}
+              area={attributes.area}
+              price={attributes.price}
+              level={attributes.floor}
+              room={attributes.room}
+              transformed={transformed}
+            />
+          ))}
         </PortfolioGrid>
-      </LayoutContainer>
+      </PortfolioContainer>
     </PortfolioSection>
   );
 }
 
+const PortfolioContainer = styled.div``;
+
 const PortfolioSection = styled.section`
-  background-color: ${(props) => props.theme.brandWhite};
+  background-color: ${(props) =>
+    props.transformed ? props.theme.brandBlack : props.theme.brandWhite};
   padding: 30px;
   display: flex;
   flex-direction: column;
@@ -112,7 +139,8 @@ const CirclesAnime = styled.div`
     width: 400px;
     height: 400px;
     border-radius: 50%;
-    background-color: ${(props) => props.theme.brandBlack};
+    background-color: ${(props) =>
+      props.transformed ? props.theme.brandWhite : props.theme.brandBlack};
     position: absolute;
     @media ${device.mobileL} {
       width: 300px;
@@ -123,9 +151,49 @@ const CirclesAnime = styled.div`
 
 const PortfolioGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 30px;
+  @media ${device.laptopS} {
+    grid-template-columns: 1fr 1fr;
+  }
   @media ${device.laptop} {
     grid-template-columns: 1fr;
+  }
+`;
+
+const SwitchButton = styled.div`
+  background-color: ${(props) =>
+    props.transformed ? props.theme.brandWhite : props.theme.brandBlack};
+  width: max-content;
+  height: 3rem;
+  margin: 2rem auto;
+  border-radius: 3vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  & span {
+    font-size: 2rem;
+    margin: 01rem;
+    padding: 1rem;
+    position: relative;
+    z-index: 2;
+    mix-blend-mode: difference;
+    color: ${(props) => props.theme.brandWhite};
+  }
+
+  &::before {
+    content: "";
+    background-color: ${(props) =>
+      props.transformed ? props.theme.brandBlack : props.theme.brandWhite};
+    width: 50%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(var(--beforeTransform));
+    transition: all 500ms;
   }
 `;
