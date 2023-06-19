@@ -10,12 +10,13 @@ import styled, { ThemeProvider } from "styled-components";
 
 import Header from "./components/header/Header";
 import Hero from "./components/hero/Hero";
-import FormComponent from "./components/form/FormComponent";
+// import FormComponent from "./components/form/FormComponent";
 import About from "./components/about/About";
 import Portfolio from "./components/portfolio/Portfolio";
 import Agents from "./components/agents/Agents";
 import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
+import FeedbackComponent from "./components/form/FeedbackComponent";
 
 function App() {
   const [locale, setLocale] = useState(i18n.language);
@@ -29,7 +30,7 @@ function App() {
             <About />
             <Portfolio />
             <Agents locale={locale} />
-            <FormComponent />
+            <FeedbackComponent />
             <Contact />
           </MainContainer>
           <Footer />

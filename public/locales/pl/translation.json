@@ -47,6 +47,19 @@
     "Viacheslav": " Młody agent nieruchomości Wiaczesław uważa, że ​​odpowiednie mieszkanie powinno pasować do stylu życia klienta i zapewniać komfort mieszkania. Każdemu klientowi poświęca należytą uwagę, zbiera informacje o jego preferencjach i budżecie, a także służy radą we wszystkich kwestiach.Wiaczesław oferuje swoim klientom również dodatkowe usługi w zakresie dekorowania i projektowania wnętrz.",
     "ViacheslavQuote": "`Zawsze znajdę dla Ciebie idealny dom!`"
   },
+  "Feedback": {
+    "Title": "Razem - Lepiej",
+    "FirstText": "Odkryj idealne połączenie luksusu i komfortu dzięki naszej wyjątkowej kolekcji nieruchomości.",
+    "SecondText": "Niezależnie od tego, czy jesteś kupującym dom po raz pierwszy, inwestorem, czy po prostu chcesz go ulepszyć, mamy dla Ciebie idealny dom.",
+    "ThirdText": "Razem możemy wiele, porozmawiajmy!",
+    "FirstName": "Imię",
+    "LastName": "Nazwisko",
+    "PhoneNumber": "Numer telefonu",
+    "Email": "Email",
+    "Message": "Wiadomość",
+    "Submit": "Wyślij",
+    "HiddenText": "Dziękuję! Skontaktujemy się z Tobą tak szybko, jak to możliwe!"
+  },
   "Contact": {
     "Title": "Kontakt",
     "Subtitle": "Pomożemy Ci znaleźć przestrzeń marzeń",

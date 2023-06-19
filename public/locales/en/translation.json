@@ -47,6 +47,19 @@
     "Viacheslav": " a young real estate agent, Vyacheslav, believes that the right housing should match the client's lifestyle and provide comfortable living. He pays due attention to each client, collecting information about their preferences and budget, and also provides advice on all issues. Vyacheslav also offers his clients additional services in decorating and interior design.",
     "ViacheslavQuote": "`I will always find the perfect home for you!`"
   },
+  "Feedback": {
+    "Title": "Better together",
+    "FirstText": "Discover the perfect blend of luxury and comfort with our exquisite collection of real estate properties.",
+    "SecondText": "Whether you are a first-time homebuyer, an investor, or simply looking to upgrade, we have the ideal home for you.",
+    "ThirdText": "We can do so much together, let's talk!",
+    "FirstName": "First Name",
+    "LastName": "Last Name",
+    "PhoneNumber": "Phone Number",
+    "Email": "Email",
+    "Message": "Message",
+    "Submit": "Submit",
+    "HiddenText": "Thank you! We will contact with you as fast as we could!"
+  },
   "Contact": {
     "Title": "Contact",
     "Subtitle": "Let us help you find the space of dream",
