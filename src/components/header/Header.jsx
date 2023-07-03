@@ -7,6 +7,9 @@ import { device } from "../../styles/utility/media-breakpoints.mjs";
 import { useTranslation } from "react-i18next";
 import LocaleContext from "../../LocaleContext.js";
 import i18n from "i18next";
+import { useNavigate, useLocation } from "react-router-dom";
+
+import localeIcon from "../../assets/icons/world.png";
 
 export default function Header() {
   let { locale, setLocale } = useContext(LocaleContext);
@@ -16,6 +19,8 @@ export default function Header() {
     return defaultLocale.filter((elem) => elem !== locale);
   };
   let [localeList, setLocaleList] = useState(fillLocaleSelect());
+  const navigate = useNavigate();
+  const location = useLocation();
 
   function changeLocale(l) {
     if (locale !== l) {
@@ -25,9 +30,14 @@ export default function Header() {
   const { t } = useTranslation();
   const [navOpen, setNavOpen] = useState(false);
   const scrollToSection = (section) => {
-    document.getElementById(section).scrollIntoView({
-      behavior: "smooth",
-    });
+    if (location.pathname !== "/") {
+      navigate("/");
+    }
+    setTimeout(() => {
+      document.getElementById(section).scrollIntoView({
+        behavior: "smooth",
+      });
+    }, 500);
   };
 
   return (
@@ -37,6 +47,7 @@ export default function Header() {
         navOpen={navOpen}
       >
         {locale.toUpperCase()}
+        <LocaleIcon src={localeIcon} alt="" />
         <LocaleSelect selectOpen={selectOpen}>
           {localeList &&
             localeList.map((elem, idx) => {
@@ -150,6 +161,8 @@ const LocaleToggle = styled.span`
   position: absolute;
   top: 40%;
   left: 30%;
+  display: flex;
+  align-items: center;
   cursor: pointer;
   z-index: 2;
   @media ${device.laptop} {
@@ -161,10 +174,15 @@ const LocaleToggle = styled.span`
   }
 `;
 
+const LocaleIcon = styled.img`
+  width: 1.5rem;
+  margin-left: 0.5rem;
+`;
+
 const LocaleSelect = styled.div`
   display: ${(props) => (props.selectOpen === true ? "block" : "none")};
   position: absolute;
-  left: -30%;
+  left: -10%;
   top: 100%;
 `;
 const Locale = styled.div`

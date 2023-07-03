@@ -9,14 +9,13 @@ import LocaleContext from "./LocaleContext.js";
 import styled, { ThemeProvider } from "styled-components";
 
 import Header from "./components/header/Header";
-import Hero from "./components/hero/Hero";
-// import FormComponent from "./components/form/FormComponent";
-import About from "./components/about/About";
-import Portfolio from "./components/portfolio/Portfolio";
-import Agents from "./components/agents/Agents";
-import Contact from "./components/contact/Contact";
+
+import Main from "./components/main/Main";
+
 import Footer from "./components/footer/Footer";
-import FeedbackComponent from "./components/form/FeedbackComponent";
+
+import { Routes, Route } from "react-router-dom";
+import Apartment from "./components/apartments/Apartment";
 
 function App() {
   const [locale, setLocale] = useState(i18n.language);
@@ -25,14 +24,10 @@ function App() {
       <ThemeProvider theme={theme}>
         <StyledApp>
           <Header />
-          <MainContainer>
-            <Hero />
-            <About />
-            <Portfolio />
-            <Agents locale={locale} />
-            <FeedbackComponent />
-            <Contact />
-          </MainContainer>
+          <Routes>
+            <Route path="/" element={<Main locale={locale} />} />
+            <Route path="/apartments/:apartmentId" element={<Apartment />} />
+          </Routes>
           <Footer />
         </StyledApp>
       </ThemeProvider>
@@ -56,8 +51,4 @@ const StyledApp = styled.div`
   @media ${device.mobileL} {
     padding: 5px;
   }
-`;
-const MainContainer = styled.main`
-  width: 100%;
-  height: 100%;
 `;

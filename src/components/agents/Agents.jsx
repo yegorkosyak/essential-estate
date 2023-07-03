@@ -31,10 +31,12 @@ export default function Agents({ locale }) {
   const { t } = useTranslation();
   const [agents, setAgents] = useState([]);
 
+  console.log(locale);
+
   useEffect(() => {
     axios
       .get(
-        `https://strapi.essentialestate.link/api/agents?locale=${locale}&populate=*`
+        `https://strapi.essentialestate.link/api/agents?populate=*&locale=${locale}`
       )
       .then(({ data }) => {
         setAgents(data.data);

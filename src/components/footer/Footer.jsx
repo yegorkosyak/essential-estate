@@ -2,27 +2,30 @@ import styled from "styled-components";
 
 import { device } from "../../styles/utility/media-breakpoints.mjs";
 import { useTranslation } from "react-i18next";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Footer() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
   const scrollToSection = (section) => {
-    document.getElementById(section).scrollIntoView({
-      behavior: "smooth",
-    });
+    if (location.pathname !== "/") {
+      navigate("/");
+    }
+    setTimeout(() => {
+      document.getElementById(section).scrollIntoView({
+        behavior: "smooth",
+      });
+    }, 500);
   };
   return (
-    <FooterContainer>
+    <FooterContainer bgColor={location.pathname !== "/" ? "#F2F1EE" : "unset"}>
       <Terms>
-        {/* Terms and Conditions
-        <br />
-        Privacy Policy & Cookies Policy
-        <br />
-        <br /> */}
-        @2022, ONO
+        @{new Date().getFullYear()}, ONO
         <br />
         NIP 9452259818
       </Terms>
-      <NavLinks>
+      <NavLinks color={location.pathname !== "/" ? "#0d0e11" : "#F2F1EE"}>
         <Link onClick={() => scrollToSection("about")}>
           {t(`Footer.About`)}
         </Link>
@@ -39,11 +42,12 @@ export default function Footer() {
 
 const FooterContainer = styled.footer`
   min-height: 200px;
-  max-width: 1280px;
-  margin: 0 auto;
+  /* max-width: 1280px; */
+  padding: 0 10rem;
   display: flex;
   align-items: center;
   gap: 30%;
+  background-color: ${(props) => props.bgColor};
   @media ${device.mobileL} {
     flex-direction: column-reverse;
     min-height: 180px;
@@ -61,13 +65,13 @@ const Terms = styled.p`
 const NavLinks = styled.div`
   display: flex;
   flex-direction: column;
+  color: ${(props) => props.color};
   @media ${device.mobileL} {
     padding-left: 1rem;
   }
 `;
 
 const Link = styled.a`
-  color: ${(props) => props.theme.brandWhite};
   font-weight: ${(props) => props.theme.weightLight};
   cursor: pointer;
   opacity: 1;
