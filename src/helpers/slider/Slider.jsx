@@ -64,13 +64,7 @@ const Slider = ({ slides }) => {
         width={slideWidth * slides.length}
       >
         {slides.map((slide, i) => (
-          <Slide
-            key={i}
-            content={
-              "https://strapi.essentialestate.link" + slide.attributes.url
-            }
-            width={slideWidth}
-          />
+          <Slide key={i} content={slide.attributes.url} width={slideWidth} />
         ))}
       </SliderContent>
       <Arrow direction="left" handleClick={prevSlide} />

@@ -10,10 +10,11 @@ export default function Card({
   level,
   room,
   transformed,
+  onClick,
 }) {
   const { t } = useTranslation();
   return (
-    <CardContainer transformed={transformed}>
+    <CardContainer transformed={transformed} onClick={onClick}>
       {/* <CardImage src={image} alt="" /> */}
       <Slider slides={images} />
       <CardTitle transformed={transformed}>{title}</CardTitle>
@@ -27,7 +28,7 @@ export default function Card({
             <TableCol transformed={transformed}>
               <CellName>{t("Portfolio.Price")}</CellName>
               <CellValue transformed={transformed}>
-                {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " zł"}
               </CellValue>
             </TableCol>
           </TableRow>

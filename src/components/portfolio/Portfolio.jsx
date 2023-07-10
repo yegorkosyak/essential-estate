@@ -11,21 +11,26 @@ import { useEffect, useRef, useState } from "react";
 import anime from "animejs";
 import axios from "axios";
 
+import { useNavigate } from "react-router-dom";
+
+import { apiUrl } from "../../utils/apiUrl";
+
 export default function Portfolio() {
   const [apartments, setApartments] = useState([]);
   const [apartmentsByListingType, setApartmentsByListingType] = useState([]);
   const [transformed, setTransformed] = useState(false);
   const { t } = useTranslation();
   const circleAnime = useRef(null);
+  const navigate = useNavigate();
 
   function randomValues() {
     anime({
       targets: ".circle",
       translateX: function () {
-        return anime.random(0, circleAnime.current.offsetWidth - 400);
+        return anime.random(0, circleAnime.current?.offsetWidth - 400);
       },
       translateY: function () {
-        return anime.random(0, circleAnime.current.offsetHeight - 400);
+        return anime.random(0, circleAnime.current?.offsetHeight - 400);
       },
       easing: "linear",
       duration: 6000,
@@ -42,16 +47,14 @@ export default function Portfolio() {
       document.getElementById("circle-wrap").append(circle);
     }
     randomValues();
-    axios
-      .get("https://strapi.essentialestate.link/api/apartments?populate=*")
-      .then(({ data }) => {
-        setApartments(data.data);
-        setApartmentsByListingType(
-          data.data.filter(
-            (apartments) => apartments.attributes.listing_type === "sale"
-          )
-        );
-      });
+    axios.get(`${apiUrl}/api/apartments?populate=*`).then(({ data }) => {
+      setApartments(data.data);
+      setApartmentsByListingType(
+        data.data.filter(
+          (apartments) => apartments.attributes.listing_type === "sale"
+        )
+      );
+    });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -107,6 +110,7 @@ export default function Portfolio() {
               level={attributes.floor}
               room={attributes.room}
               transformed={transformed}
+              onClick={() => navigate(`/apartments/${attributes.uuid}`)}
             />
           ))}
         </PortfolioGrid>
