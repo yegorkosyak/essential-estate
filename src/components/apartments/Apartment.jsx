@@ -51,46 +51,40 @@ export default function Apartment() {
               </PriceDetail>
             </HeroDatails>
           </HeroImage>
-          <DetailsTable>
-            <TableBody>
-              <TableRow>
-                <TableCol className="border-right border-bottom">
-                  <CellName>{t(`Portfolio.Area`)}</CellName>
-                  <CellValue>{apartment.attributes.area}</CellValue>
-                </TableCol>
-                <TableCol className="border-bottom border-left border-right">
-                  <CellName>{t(`Portfolio.Rooms`)}</CellName>
-                  <CellValue>{apartment.attributes.room}</CellValue>
-                </TableCol>
-                <TableCol className="border-bottom border-left">
-                  <CellName>{t(`Portfolio.Storey`)}</CellName>
-                  <CellValue>{apartment.attributes.storey}</CellValue>
-                </TableCol>
-              </TableRow>
-              <TableRow>
-                <TableCol className="border-top border-right">
-                  <CellName>{t(`Portfolio.Level`)}</CellName>
-                  <CellValue>{apartment.attributes.floor}</CellValue>
-                </TableCol>
-                <TableCol className="border-left border-top border-right">
-                  <CellName>{t(`Portfolio.Parking`)}</CellName>
-                  <CellValue>
-                    {apartment.attributes.parking
-                      ? t(`Portfolio.Yes`)
-                      : t(`Portfolio.No`)}
-                  </CellValue>
-                </TableCol>
-                <TableCol className="border-left border-top">
-                  <CellName>{t(`Portfolio.Balcony`)}</CellName>
-                  <CellValue>
-                    {apartment.attributes.balcony
-                      ? t(`Portfolio.Yes`)
-                      : t(`Portfolio.No`)}
-                  </CellValue>
-                </TableCol>
-              </TableRow>
-            </TableBody>
-          </DetailsTable>
+          <DetailsGrid>
+            <Cell>
+              <CellName>{t(`Portfolio.Area`)}</CellName>
+              <CellValue>{apartment.attributes.area}</CellValue>
+            </Cell>
+            <Cell>
+              <CellName>{t(`Portfolio.Rooms`)}</CellName>
+              <CellValue>{apartment.attributes.room}</CellValue>
+            </Cell>
+            <Cell>
+              <CellName>{t(`Portfolio.Storey`)}</CellName>
+              <CellValue>{apartment.attributes.storey}</CellValue>
+            </Cell>
+            <Cell>
+              <CellName>{t(`Portfolio.Level`)}</CellName>
+              <CellValue>{apartment.attributes.floor}</CellValue>
+            </Cell>
+            <Cell>
+              <CellName>{t(`Portfolio.Parking`)}</CellName>
+              <CellValue>
+                {apartment.attributes.parking
+                  ? t(`Portfolio.Yes`)
+                  : t(`Portfolio.No`)}
+              </CellValue>
+            </Cell>
+            <Cell>
+              <CellName>{t(`Portfolio.Balcony`)}</CellName>
+              <CellValue>
+                {apartment.attributes.balcony
+                  ? t(`Portfolio.Yes`)
+                  : t(`Portfolio.No`)}
+              </CellValue>
+            </Cell>
+          </DetailsGrid>
           <ImagesGrid>
             {apartment.attributes.photos.data.map((photo) => {
               return (
@@ -146,6 +140,22 @@ export default function Apartment() {
     </ApartmentContainer>
   );
 }
+
+const DetailsGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  @media ${device.laptopS} {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media ${device.tabletS} {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const Cell = styled.div`
+  padding: 1.5rem;
+  border: 1px solid white;
+`;
 
 const ApartmentContainer = styled.main``;
 
@@ -225,33 +235,6 @@ const PriceDetail = styled.span`
   }
 `;
 
-const DetailsTable = styled.table`
-  width: 100%;
-  border-spacing: unset;
-  table-layout: fixed;
-`;
-
-const TableBody = styled.tbody``;
-
-const TableRow = styled.tr``;
-
-const TableCol = styled.td`
-  padding: 1.5rem;
-  /* width: 50%; */
-  &.border-right {
-    border-right: 1px solid white;
-  }
-  &.border-bottom {
-    border-bottom: 1px solid white;
-  }
-  &.border-left {
-    border-left: 1px solid white;
-  }
-  &.border-top {
-    border-top: 1px solid white;
-  }
-`;
-
 const CellName = styled.p`
   margin: 0;
   color: ${(props) => props.theme.brandGrey};
@@ -300,6 +283,7 @@ const DetailWrap = styled.div`
   width: 50%;
   @media ${device.laptopS} {
     width: 90%;
+    padding: 1rem;
   }
 `;
 

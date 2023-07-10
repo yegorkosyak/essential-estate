@@ -42,7 +42,6 @@ export default function Footer() {
 
 const FooterContainer = styled.footer`
   min-height: 200px;
-  /* max-width: 1280px; */
   padding: 0 10rem;
   display: flex;
   align-items: center;
@@ -52,6 +51,7 @@ const FooterContainer = styled.footer`
     flex-direction: column-reverse;
     min-height: 180px;
     align-items: flex-start;
+    padding: 0 4rem;
   }
 `;
 
