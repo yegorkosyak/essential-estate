@@ -29,12 +29,19 @@
   },
   "Portfolio": {
     "Title": "Portfolio",
-    "Area": "powierzchnia",
-    "Price": "cena",
-    "Level": "poziom",
-    "Rooms": "liczba pokoi",
+    "Area": "Powierzchnia",
+    "Price": "Cena",
+    "Level": "Piętro",
+    "Rooms": "Liczba Pokoi",
     "Sale": "Sprzedaż",
-    "Rent": "Wynajem"
+    "Rent": "Wynajem",
+    "Storey": "Kondygnacja",
+    "Parking": "Parking",
+    "Balcony": "Balcon",
+    "Description": "Opis",
+    "Responsible": "Odpowiedzialny Agent",
+    "Yes": "Tak",
+    "No": "Nie"
   },
   "Agents": {
     "Title": "Agenci",

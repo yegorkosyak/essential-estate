@@ -29,12 +29,19 @@
   },
   "Portfolio": {
     "Title": "Portfolio",
-    "Area": "area",
-    "Price": "price",
-    "Level": "level",
-    "Rooms": "rooms number",
+    "Area": "Area",
+    "Price": "Price",
+    "Level": "Level",
+    "Rooms": "Rooms Number",
     "Sale": "Sale",
-    "Rent": "Rent"
+    "Rent": "Rent",
+    "Storey": "Storey",
+    "Parking": "Parking",
+    "Balcony": "Balcony",
+    "Description": "Description",
+    "Responsible": "Responsible Agent",
+    "Yes": "Yes",
+    "No": "No"
   },
   "Agents": {
     "Title": "Agents",

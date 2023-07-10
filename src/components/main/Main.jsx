@@ -7,13 +7,13 @@ import Agents from "../agents/Agents";
 import Contact from "../contact/Contact";
 import FeedbackComponent from "../form/FeedbackComponent";
 
-function Main(locale) {
+function Main() {
   return (
     <MainContainer>
       <Hero />
       <About />
       <Portfolio />
-      <Agents locale={locale} />
+      <Agents />
       <FeedbackComponent />
       <Contact />
     </MainContainer>

@@ -25,8 +25,8 @@ function App() {
         <StyledApp>
           <Header />
           <Routes>
-            <Route path="/" element={<Main locale={locale} />} />
-            <Route path="/apartments/:apartmentId" element={<Apartment />} />
+            <Route path="/" element={<Main />} />
+            <Route path="/apartments/:apartmentUUID" element={<Apartment />} />
           </Routes>
           <Footer />
         </StyledApp>

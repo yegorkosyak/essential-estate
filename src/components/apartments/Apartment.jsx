@@ -6,46 +6,44 @@ import axios from "axios";
 
 import Loader from "../../helpers/loader/Loader";
 
+import { apiUrl } from "../../utils/apiUrl";
+import { device } from "../../styles/utility/media-breakpoints.mjs";
+import ImageModal from "./ImageModal";
+import { useTranslation } from "react-i18next";
+
 export default function Apartment() {
   const [apartment, setApartment] = useState();
   const [agent, setAgent] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { apartmentId } = useParams();
+  const [modalIsOpened, setModalIsOpened] = useState(false);
+  const [modalImage, setModalImage] = useState();
+  const { apartmentUUID } = useParams();
+  const { i18n, t } = useTranslation();
 
   useEffect(() => {
     axios
       .get(
-        `https://strapi.essentialestate.link/api/apartments/${apartmentId}?populate=*`
+        `${apiUrl}/api/apartments?filters[uuid][$eq]=${apartmentUUID}&populate[0]=photos&populate[1]=agent&populate[2]=agent.photo&locale=${i18n.language}`
       )
       .then(({ data }) => {
-        console.log(data);
-        setApartment(data.data);
-      })
-      .then(() => {
-        axios
-          .get(`https://strapi.essentialestate.link/api/agents/2?populate=*`)
-          .then(({ data }) => {
-            setAgent(data.data);
-            setIsLoading(false);
-          });
+        setApartment(data.data[0]);
+        setAgent(data.data[0].attributes.agent.data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
       });
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [i18n.language]);
   return (
     <ApartmentContainer>
       {isLoading && <Loader />}
-      {apartment && (
+      {apartment && apartment.attributes && (
         <>
-          <HeroImage
-            src={`https://strapi.essentialestate.link${apartment.attributes.photos.data[0].attributes.url}`}
-          >
+          <HeroImage src={apartment.attributes.photos.data[0].attributes.url}>
             <HeroDatails>
               <StreetDetail>{apartment.attributes.location}</StreetDetail>
-              <PriceLabel>price</PriceLabel>l
+              <PriceLabel>{t(`Portfolio.Price`)}</PriceLabel>l
               <PriceDetail>
                 {apartment.attributes.price
                   .toString()
@@ -57,22 +55,38 @@ export default function Apartment() {
             <TableBody>
               <TableRow>
                 <TableCol className="border-right border-bottom">
-                  <CellName>Area</CellName>
+                  <CellName>{t(`Portfolio.Area`)}</CellName>
                   <CellValue>{apartment.attributes.area}</CellValue>
                 </TableCol>
+                <TableCol className="border-bottom border-left border-right">
+                  <CellName>{t(`Portfolio.Rooms`)}</CellName>
+                  <CellValue>{apartment.attributes.room}</CellValue>
+                </TableCol>
                 <TableCol className="border-bottom border-left">
-                  <CellName>Estate type</CellName>
-                  <CellValue>{apartment.attributes.listing_type}</CellValue>
+                  <CellName>{t(`Portfolio.Storey`)}</CellName>
+                  <CellValue>{apartment.attributes.storey}</CellValue>
                 </TableCol>
               </TableRow>
               <TableRow>
                 <TableCol className="border-top border-right">
-                  <CellName>Level</CellName>
+                  <CellName>{t(`Portfolio.Level`)}</CellName>
                   <CellValue>{apartment.attributes.floor}</CellValue>
                 </TableCol>
+                <TableCol className="border-left border-top border-right">
+                  <CellName>{t(`Portfolio.Parking`)}</CellName>
+                  <CellValue>
+                    {apartment.attributes.parking
+                      ? t(`Portfolio.Yes`)
+                      : t(`Portfolio.No`)}
+                  </CellValue>
+                </TableCol>
                 <TableCol className="border-left border-top">
-                  <CellName>Rooms</CellName>
-                  <CellValue>{apartment.attributes.room}</CellValue>
+                  <CellName>{t(`Portfolio.Balcony`)}</CellName>
+                  <CellValue>
+                    {apartment.attributes.balcony
+                      ? t(`Portfolio.Yes`)
+                      : t(`Portfolio.No`)}
+                  </CellValue>
                 </TableCol>
               </TableRow>
             </TableBody>
@@ -82,55 +96,40 @@ export default function Apartment() {
               return (
                 <GridImage
                   key={photo.id}
-                  src={`https://strapi.essentialestate.link${photo.attributes.url}`}
+                  src={photo.attributes.url}
                   alt="alt"
+                  onClick={() => {
+                    setModalImage(photo.attributes.url);
+                    setModalIsOpened(true);
+                  }}
                 />
               );
             })}
           </ImagesGrid>
           <BottomDetails>
             <DetailWrap>
-              <DetailTitle>Description</DetailTitle>
+              <DetailTitle>{t(`Portfolio.Description`)}</DetailTitle>
               <br />
               <DescriptionContent>
-                For rent a modern and fully equipped apartment with an area of
-                54m2, located at Przewóz Street. (two more similar ones
-                available in this location). This luxurious apartment consists
-                of 3 rooms, including an air-conditioned master bedroom, a
-                living room with a kitchenette, a bathroom with a shower and a
-                balcony. All rooms are equipped with designer furniture and LED
-                lighting, ensuring a comfortable and modern lifestyle. The
-                second room will be furnished by the owner according to the
-                needs of the tenant.
-                <hr />
-                The apartment is located in a modern building with an elevator,
-                large windows with acoustic glazing and central heating. In
-                addition, it is possible to rent a parking space in the
-                underground garage. The building is well insulated and energy
-                efficient, ensuring comfort of living and savings on bills. The
-                location of the apartment is very convenient, just a few minutes
-                from tram lines 6, 11 and 20 and bus lines 123, 125, 221, 264
-                and 425. There are shops, restaurants and parks nearby that
-                ensure a comfortable lifestyle.
+                {apartment.attributes.description}
               </DescriptionContent>
             </DetailWrap>
             <DetailWrap>
-              <DetailTitle>Responsible Agent</DetailTitle>
+              <DetailTitle>{t(`Portfolio.Responsible`)}</DetailTitle>
               {agent && (
                 <AgentWrap>
                   <AgentPhoto
-                    src={
-                      "https://strapi.essentialestate.link" +
-                      agent.attributes?.photo.data.attributes.url
-                    }
+                    src={agent.attributes?.photo.data.attributes.url}
                     alt="Elizaveta"
                   />
                   <AgentDetails>
-                    <AgentName>Elizaveta</AgentName>
+                    <AgentName>
+                      {agent.attributes.first_name} {agent.attributes.last_name}
+                    </AgentName>
                     <AgentInfo>
-                      Real estate advisor
+                      {agent.attributes.role}
                       <br />
-                      +48 745 834 533
+                      {agent.attributes.phone_number}
                     </AgentInfo>
                   </AgentDetails>
                 </AgentWrap>
@@ -139,6 +138,11 @@ export default function Apartment() {
           </BottomDetails>
         </>
       )}
+      <ImageModal
+        isOpened={modalIsOpened}
+        onClose={() => setModalIsOpened(false)}
+        imageSrc={modalImage}
+      />
     </ApartmentContainer>
   );
 }
@@ -152,6 +156,9 @@ const HeroImage = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
+  @media ${device.mobileL} {
+    height: 50vh;
+  }
 `;
 
 const HeroDatails = styled.div`
@@ -161,6 +168,14 @@ const HeroDatails = styled.div`
   z-index: 1;
   padding: 2rem;
   padding-top: 1rem;
+  @media ${device.tablet} {
+    bottom: 2rem;
+    left: 2rem;
+  }
+  @media ${device.tabletS} {
+    bottom: 1rem;
+    left: 1rem;
+  }
   &:before {
     position: absolute;
     left: 0;
@@ -177,6 +192,12 @@ const HeroDatails = styled.div`
 const StreetDetail = styled.h2`
   color: white;
   font-size: 2rem;
+  @media ${device.tabletS} {
+    font-size: 1.5rem;
+  }
+  @media ${device.mobileL} {
+    font-size: 1rem;
+  }
 `;
 
 const PriceLabel = styled.span`
@@ -184,17 +205,30 @@ const PriceLabel = styled.span`
   font-weight: ${(props) => props.theme.weightBold};
   font-size: 2rem;
   margin-right: 2rem;
+  @media ${device.tabletS} {
+    font-size: 1.5rem;
+  }
+  @media ${device.mobileL} {
+    font-size: 1rem;
+  }
 `;
 
 const PriceDetail = styled.span`
   color: ${(props) => props.theme.brandWhite};
   font-weight: ${(props) => props.theme.weightXLight};
   font-size: 3rem;
+  @media ${device.tabletS} {
+    font-size: 2rem;
+  }
+  @media ${device.mobileL} {
+    font-size: 1.5rem;
+  }
 `;
 
 const DetailsTable = styled.table`
   width: 100%;
   border-spacing: unset;
+  table-layout: fixed;
 `;
 
 const TableBody = styled.tbody``;
@@ -203,7 +237,7 @@ const TableRow = styled.tr``;
 
 const TableCol = styled.td`
   padding: 1.5rem;
-  width: 50%;
+  /* width: 50%; */
   &.border-right {
     border-right: 1px solid white;
   }
@@ -223,6 +257,9 @@ const CellName = styled.p`
   color: ${(props) => props.theme.brandGrey};
   font-weight: ${(props) => props.theme.weightBold};
   font-size: 2rem;
+  @media ${device.tablet} {
+    font-size: 1.5rem;
+  }
 `;
 const CellValue = styled.p`
   margin: 0;
@@ -230,12 +267,21 @@ const CellValue = styled.p`
     props.transformed ? props.theme.brandBlack : props.theme.brandWhite};
   font-weight: ${(props) => props.theme.weightLight};
   font-size: 2.5rem;
+  @media ${device.tablet} {
+    font-size: 2rem;
+  }
 `;
 
 const ImagesGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 0.5rem;
+  @media ${device.laptopS} {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media ${device.tabletS} {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const GridImage = styled.img`
@@ -244,11 +290,17 @@ const GridImage = styled.img`
 
 const BottomDetails = styled.div`
   display: flex;
+  @media ${device.laptopS} {
+    flex-direction: column;
+  }
 `;
 
 const DetailWrap = styled.div`
   padding: 1.5rem;
   width: 50%;
+  @media ${device.laptopS} {
+    width: 90%;
+  }
 `;
 
 const DetailTitle = styled.span`
@@ -257,22 +309,30 @@ const DetailTitle = styled.span`
   font-size: 2rem;
 `;
 
-const DescriptionContent = styled.span`
+const DescriptionContent = styled.p`
   color: ${(props) => props.theme.brandWhite};
   font-size: 1.5rem;
   font-weight: ${(props) => props.theme.weightLight};
   line-height: 140%;
+  column-count: 2;
+  column-rule: 1px solid ${(props) => props.theme.brandGrey};
+  @media ${device.tablet} {
+    column-count: 1;
+  }
 `;
 
 const AgentWrap = styled.div`
-  height: 90%;
   display: flex;
   align-items: end;
+  @media ${device.tabletS} {
+    align-items: center;
+    flex-direction: column;
+  }
 `;
 
 const AgentPhoto = styled.img`
   height: 100%;
-  margin-right: 1rem;
+  padding: 1rem;
 `;
 
 const AgentDetails = styled.div``;
@@ -281,11 +341,17 @@ const AgentName = styled.p`
   color: ${(props) => props.theme.brandWhite};
   font-weight: ${(props) => props.theme.weightLight};
   margin-bottom: 0.5rem;
-  font-size: 3rem;
+  font-size: 2.2rem;
+  @media ${device.tabletS} {
+    font-size: 1.5rem;
+  }
 `;
 
 const AgentInfo = styled.span`
   color: ${(props) => props.theme.brandGrey};
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-style: italic;
+  @media ${device.tabletS} {
+    font-size: 1rem;
+  }
 `;

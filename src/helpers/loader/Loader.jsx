@@ -4,14 +4,14 @@ import styled from "styled-components";
 function Loader() {
   return (
     <LoaderWrap>
-      <div class="loader">
-        <div class="loader-square"></div>
-        <div class="loader-square"></div>
-        <div class="loader-square"></div>
-        <div class="loader-square"></div>
-        <div class="loader-square"></div>
-        <div class="loader-square"></div>
-        <div class="loader-square"></div>
+      <div className="loader">
+        <div className="loader-square"></div>
+        <div className="loader-square"></div>
+        <div className="loader-square"></div>
+        <div className="loader-square"></div>
+        <div className="loader-square"></div>
+        <div className="loader-square"></div>
+        <div className="loader-square"></div>
       </div>
     </LoaderWrap>
   );

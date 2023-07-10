@@ -67,7 +67,7 @@ export default function Header() {
             })}
         </LocaleSelect>
       </LocaleToggle>
-      <Logo src={logo} alt="" />
+      <Logo src={logo} alt="" onClick={() => navigate("/")} />
       <Nav>
         <Link onClick={() => scrollToSection("about")}>
           {t("Header.About")}
@@ -195,6 +195,7 @@ const Locale = styled.div`
 
 const Logo = styled.img`
   width: 150px;
+  cursor: pointer;
   @media ${device.mobileL} {
     width: 100px;
   }

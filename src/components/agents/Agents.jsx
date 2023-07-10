@@ -9,39 +9,38 @@ import { device } from "../../styles/utility/media-breakpoints.mjs";
 
 import { useTranslation } from "react-i18next";
 
-const Agent = ({ image, agentName, comment, quote }) => {
+import { apiUrl } from "../../utils/apiUrl";
+
+const Agent = ({ image, agentName, comment, email, phoneNumber }) => {
   return (
     <AgentBody>
       <Frame>
         <AgentPhoto src={image} alt={agentName} />
       </Frame>
-
       <AgentInfo>
         <AgentName>{agentName}</AgentName>
         <AgentComment>{comment}</AgentComment>
         <Quote>
-          <i>{quote}</i>
+          <i>{email}</i>
+          <hr />
+          <i>{phoneNumber}</i>
         </Quote>
       </AgentInfo>
     </AgentBody>
   );
 };
 
-export default function Agents({ locale }) {
-  const { t } = useTranslation();
+export default function Agents() {
+  const { t, i18n } = useTranslation();
   const [agents, setAgents] = useState([]);
-
-  console.log(locale);
 
   useEffect(() => {
     axios
-      .get(
-        `https://strapi.essentialestate.link/api/agents?populate=*&locale=${locale}`
-      )
+      .get(`${apiUrl}/api/agents?populate=*&locale=${i18n.language}`)
       .then(({ data }) => {
         setAgents(data.data);
       });
-  }, [locale]);
+  }, [i18n.language]);
   return (
     <AgentsContainer id="agents">
       <SectionTitle color={theme.brandWhite}>{t(`Agents.Title`)}</SectionTitle>
@@ -50,13 +49,11 @@ export default function Agents({ locale }) {
         {agents.map(({ id, attributes }) => (
           <Agent
             key={id}
-            image={
-              "https://strapi.essentialestate.link" +
-              attributes.photo.data.attributes.url
-            }
-            agentName={attributes.name}
+            image={attributes.photo.data.attributes.url}
+            agentName={attributes.first_name + " " + attributes.last_name}
             comment={attributes.description}
-            quote={attributes.quote}
+            email={attributes.email}
+            phoneNumber={attributes.phone_number}
           />
         ))}
       </AgentsWrap>
@@ -109,7 +106,6 @@ const AgentPhoto = styled.img`
 `;
 
 const AgentInfo = styled.div`
-  align-self: flex-end;
   @media ${device.tablet} {
     padding: 2rem;
   }

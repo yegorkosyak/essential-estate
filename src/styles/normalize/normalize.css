@@ -35,6 +35,10 @@ body {
   margin: 0;
 }
 
+body.modal-open {
+  overflow: hidden; /* see "modal-open" in Modal.tsx */
+}
+
 /**
    * Render the `main` element consistently in IE.
    */
