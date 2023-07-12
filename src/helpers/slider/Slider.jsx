@@ -19,7 +19,7 @@ const Slider = ({ slides }) => {
   const { translate, transition, activeIndex } = state;
 
   const nextSlide = () => {
-    if (activeIndex === slides.length - 1) {
+    if (activeIndex === slides?.length - 1) {
       return setState({
         ...state,
         translate: 0,
@@ -38,8 +38,8 @@ const Slider = ({ slides }) => {
     if (activeIndex === 0) {
       return setState({
         ...state,
-        translate: (slides.length - 1) * slideWidth,
-        activeIndex: slides.length - 1,
+        translate: (slides?.length - 1) * slideWidth,
+        activeIndex: slides?.length - 1,
       });
     }
 
@@ -61,9 +61,9 @@ const Slider = ({ slides }) => {
       <SliderContent
         translate={translate}
         transition={transition}
-        width={slideWidth * slides.length}
+        width={slideWidth * slides?.length}
       >
-        {slides.map((slide, i) => (
+        {slides?.map((slide, i) => (
           <Slide key={i} content={slide.attributes.url} width={slideWidth} />
         ))}
       </SliderContent>

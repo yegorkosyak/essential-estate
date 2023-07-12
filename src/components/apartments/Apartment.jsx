@@ -269,6 +269,7 @@ const ImagesGrid = styled.div`
 
 const GridImage = styled.img`
   width: 100%;
+  height: 100%;
 `;
 
 const BottomDetails = styled.div`
@@ -298,11 +299,11 @@ const DescriptionContent = styled.p`
   font-size: 1.5rem;
   font-weight: ${(props) => props.theme.weightLight};
   line-height: 140%;
-  column-count: 2;
-  column-rule: 1px solid ${(props) => props.theme.brandGrey};
-  @media ${device.tablet} {
+  /* column-count: 2;
+  column-rule: 1px solid ${(props) => props.theme.brandGrey}; */
+  /* @media ${device.tablet} {
     column-count: 1;
-  }
+  } */
 `;
 
 const AgentWrap = styled.div`
