@@ -127,7 +127,7 @@ const AgentComment = styled.span`
 const Quote = styled.p`
   color: ${(props) => props.theme.brandGrey};
   padding-left: 2rem;
-  font-size: 1.3rem;
+  font-size: 1rem;
   position: relative;
   &:before {
     content: "";
