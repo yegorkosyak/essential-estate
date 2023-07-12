@@ -43,7 +43,7 @@ export default function Apartment() {
           <HeroImage src={apartment.attributes.photos.data[0].attributes.url}>
             <HeroDatails>
               <StreetDetail>{apartment.attributes.location}</StreetDetail>
-              <PriceLabel>{t(`Portfolio.Price`)}</PriceLabel>l
+              <PriceLabel>{t(`Portfolio.Price`)}</PriceLabel>
               <PriceDetail>
                 {apartment.attributes.price
                   .toString()
@@ -239,20 +239,14 @@ const CellName = styled.p`
   margin: 0;
   color: ${(props) => props.theme.brandGrey};
   font-weight: ${(props) => props.theme.weightBold};
-  font-size: 2rem;
-  @media ${device.tablet} {
-    font-size: 1.5rem;
-  }
+  font-size: 1.5rem;
 `;
 const CellValue = styled.p`
   margin: 0;
   color: ${(props) =>
     props.transformed ? props.theme.brandBlack : props.theme.brandWhite};
   font-weight: ${(props) => props.theme.weightLight};
-  font-size: 2.5rem;
-  @media ${device.tablet} {
-    font-size: 2rem;
-  }
+  font-size: 2rem;
 `;
 
 const ImagesGrid = styled.div`
@@ -318,6 +312,7 @@ const AgentWrap = styled.div`
 const AgentPhoto = styled.img`
   height: 100%;
   padding: 1rem;
+  width: 300px;
 `;
 
 const AgentDetails = styled.div``;

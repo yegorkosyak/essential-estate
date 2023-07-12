@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import styled from "styled-components";
+import { device } from "../../styles/utility/media-breakpoints.mjs";
 
 const isClickInsideRectangle = (e, element) => {
   const r = element.getBoundingClientRect();
@@ -42,10 +43,29 @@ export default ImageModal;
 
 const Container = styled.dialog`
   padding: unset;
+  height: 90%;
+  overflow: hidden;
+  scroll-behavior: unset;
   ::backdrop {
     background: rgba(0, 0, 0, 0.3);
   }
   img {
-    width: 65wv;
+    width: 100%;
+    height: 100%;
+  }
+  @media ${device.laptopL} {
+    height: 70%;
+  }
+  @media ${device.laptop} {
+    height: 50%;
+  }
+  @media ${device.tablet} {
+    height: 35%;
+  }
+  @media ${device.tabletS} {
+    height: 25%;
+  }
+  @media ${device.mobileL} {
+    height: 20%;
   }
 `;
