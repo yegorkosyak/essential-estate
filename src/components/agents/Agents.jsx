@@ -49,11 +49,11 @@ export default function Agents() {
         {agents.map(({ id, attributes }) => (
           <Agent
             key={id}
-            image={attributes.photo.data.attributes.url}
-            agentName={attributes.first_name + " " + attributes.last_name}
-            comment={attributes.description}
-            email={attributes.email}
-            phoneNumber={attributes.phone_number}
+            image={attributes?.photo.data?.attributes.url}
+            agentName={attributes?.first_name + " " + attributes?.last_name}
+            comment={attributes?.description}
+            email={attributes?.email}
+            phoneNumber={attributes?.phone_number}
           />
         ))}
       </AgentsWrap>
