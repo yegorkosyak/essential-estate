@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-import { SectionTitle } from "../../styles/components/Title";
+import { SectionTitle } from "@styles/components/Title";
 import Card from "./Card";
 
-import { device } from "../../styles/utility/media-breakpoints.mjs";
+import { device } from "@styles/utility/media-breakpoints.mjs";
 
 import { useTranslation } from "react-i18next";
 import { useEffect, useRef, useState } from "react";
@@ -13,7 +13,7 @@ import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
 
-import { apiUrl } from "../../utils/apiUrl";
+import { apiUrl } from "@utils/apiUrl";
 
 export default function Portfolio() {
   const [apartments, setApartments] = useState([]);

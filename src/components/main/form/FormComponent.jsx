@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-import { device } from "../../styles/utility/media-breakpoints.mjs";
+import { device } from "@styles/utility/media-breakpoints.mjs";
 
 import { useTranslation } from "react-i18next";
 

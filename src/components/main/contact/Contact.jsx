@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-import { LayoutContainer } from "../../styles/components/LayoutContainer";
-import { SectionTitle } from "../../styles/components/Title";
-import { device } from "../../styles/utility/media-breakpoints.mjs";
+import { LayoutContainer } from "@styles/components/LayoutContainer";
+import { SectionTitle } from "@styles/components/Title";
+import { device } from "@styles/utility/media-breakpoints.mjs";
 
-import romb from "../../assets/images/contact/romb.png";
-import telegram from "../../assets/svg/telegram.svg";
+import romb from "@assets/images/contact/romb.png";
+import telegram from "@assets/svg/telegram.svg";
 
 import { useTranslation } from "react-i18next";
 

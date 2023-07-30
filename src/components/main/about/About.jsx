@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-import { SectionTitle } from "../../styles/components/Title";
+import { SectionTitle } from "@styles/components/Title";
 
-import aboutTime from "../../assets/images/about/about-1.jpg";
-import aboutOnline from "../../assets/images/about/about-2.jpg";
-import aboutQuality from "../../assets/images/about/about-3.jpg";
-import breakRight from "../../assets/svg/section-break/diamond-break-right.svg";
-import breakLeft from "../../assets/svg/section-break/diamond-break-left.svg";
-import { theme } from "../../styles/utility/global-theme.mjs";
-import { device } from "../../styles/utility/media-breakpoints.mjs";
+import aboutTime from "@assets/images/about/about-1.jpg";
+import aboutOnline from "@assets/images/about/about-2.jpg";
+import aboutQuality from "@assets/images/about/about-3.jpg";
+import breakRight from "@assets/svg/section-break/diamond-break-right.svg";
+import breakLeft from "@assets/svg/section-break/diamond-break-left.svg";
+import { theme } from "@styles/utility/global-theme.mjs";
+import { device } from "@styles/utility/media-breakpoints.mjs";
 
 import { useTranslation } from "react-i18next";
 

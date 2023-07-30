@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import Slider from "../../helpers/slider/Slider";
+import Slider from "@helpers/slider/Slider";
 
 export default function Card({
   images,

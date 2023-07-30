@@ -154,7 +154,6 @@ const ContainerHeader = styled.header`
     height: 60px;
   }
 `;
-
 const LocaleToggle = styled.span`
   font-size: 1.2rem;
   font-weight: ${(props) => props.theme.weightXLight};
@@ -173,12 +172,10 @@ const LocaleToggle = styled.span`
     right: 35%;
   }
 `;
-
 const LocaleIcon = styled.img`
   width: 1.5rem;
   margin-left: 0.5rem;
 `;
-
 const LocaleSelect = styled.div`
   display: ${(props) => (props.selectOpen === true ? "block" : "none")};
   position: absolute;
@@ -192,7 +189,6 @@ const Locale = styled.div`
     opacity: 0.9;
   }
 `;
-
 const Logo = styled.img`
   width: 150px;
   cursor: pointer;
@@ -200,7 +196,6 @@ const Logo = styled.img`
     width: 100px;
   }
 `;
-
 const Nav = styled.ul`
   list-style-type: none;
   display: flex;
@@ -210,13 +205,11 @@ const Nav = styled.ul`
     display: none;
   }
 `;
-
 const Link = styled.li`
   font-size: 1.5rem;
   font-weight: ${(props) => props.theme.weightXLight};
   cursor: pointer;
 `;
-
 const ContactLink = styled(Link)`
   color: ${(props) => props.theme.brandWhite};
   position: relative;
@@ -234,7 +227,6 @@ const ContactLink = styled(Link)`
     z-index: -1;
   }
 `;
-
 const BurgerButton = styled.div`
   display: none;
   position: absolute;
@@ -254,7 +246,6 @@ const BurgerButton = styled.div`
     height: 80px;
   }
 `;
-
 const BurgerNavWrap = styled.div`
   height: 11px;
   display: flex;
@@ -279,7 +270,6 @@ const BurgerNavWrap = styled.div`
         : "translateY(0) rotate(0)"};
   }
 `;
-
 const BurgerDash = styled.div`
   width: 80px;
   height: 1px;
@@ -289,7 +279,6 @@ const BurgerDash = styled.div`
     width: 40px;
   }
 `;
-
 const BurgerMenu = styled.div`
   display: none;
   @media ${device.laptop} {
@@ -307,11 +296,9 @@ const BurgerMenu = styled.div`
     z-index: 1;
   }
 `;
-
 const BurgerNav = styled.ul`
   list-style-type: none;
 `;
-
 const BurgerLink = styled.li`
   font-size: 1.5rem;
   font-weight: ${(props) => props.theme.weightXLight};

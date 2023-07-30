@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-import { SectionTitle } from "../../styles/components/Title";
+import { SectionTitle } from "@styles/components/Title";
 
-import { theme } from "../../styles/utility/global-theme.mjs";
-import { device } from "../../styles/utility/media-breakpoints.mjs";
+import { theme } from "@styles/utility/global-theme.mjs";
+import { device } from "@styles/utility/media-breakpoints.mjs";
 
 import { useTranslation } from "react-i18next";
 
-import { apiUrl } from "../../utils/apiUrl";
+import { apiUrl } from "@utils/apiUrl";
 
 const Agent = ({ image, agentName, comment, email, phoneNumber }) => {
   return (

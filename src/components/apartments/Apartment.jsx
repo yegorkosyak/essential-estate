@@ -152,11 +152,6 @@ const DetailsGrid = styled.div`
   }
 `;
 
-const Cell = styled.div`
-  padding: 1.5rem;
-  border: 1px solid white;
-`;
-
 const ApartmentContainer = styled.main``;
 
 const HeroImage = styled.div`
@@ -235,18 +230,23 @@ const PriceDetail = styled.span`
   }
 `;
 
+const Cell = styled.div`
+  padding: 1rem;
+  border: 1px solid white;
+`;
+
 const CellName = styled.p`
   margin: 0;
   color: ${(props) => props.theme.brandGrey};
   font-weight: ${(props) => props.theme.weightBold};
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 `;
 const CellValue = styled.p`
   margin: 0;
   color: ${(props) =>
     props.transformed ? props.theme.brandBlack : props.theme.brandWhite};
   font-weight: ${(props) => props.theme.weightLight};
-  font-size: 2rem;
+  font-size: 1.5rem;
 `;
 
 const ImagesGrid = styled.div`
@@ -293,11 +293,6 @@ const DescriptionContent = styled.p`
   font-size: 1.5rem;
   font-weight: ${(props) => props.theme.weightLight};
   line-height: 140%;
-  /* column-count: 2;
-  column-rule: 1px solid ${(props) => props.theme.brandGrey}; */
-  /* @media ${device.tablet} {
-    column-count: 1;
-  } */
 `;
 
 const AgentWrap = styled.div`
