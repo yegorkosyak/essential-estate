@@ -19,15 +19,15 @@ export default function Services() {
       </SectionTitle>
       <ServiceList>
         <ServiceWrap>
-          <img src={consultings} alt="" />
+          <ServiceIcon src={consultings} alt="" />
           <SericeName>{t("Services.Consultings")}</SericeName>
         </ServiceWrap>
         <ServiceWrap>
-          <img src={property} alt="" />
+          <ServiceIcon src={property} alt="" />
           <SericeName>{t("Services.BuySell")}</SericeName>
         </ServiceWrap>
         <ServiceWrap>
-          <img src={rent} alt="" />
+          <ServiceIcon src={rent} alt="" />
           <SericeName>{t("Services.Rent")}</SericeName>
         </ServiceWrap>
       </ServiceList>
@@ -38,7 +38,7 @@ export default function Services() {
 const ServicesContainer = styled.section`
   max-width: 1280px;
   margin: 0 auto;
-  padding: 4rem 0;
+  padding: 2rem 0;
 `;
 
 const ServiceList = styled.div`
@@ -52,6 +52,12 @@ const ServiceList = styled.div`
 const ServiceWrap = styled.div`
   text-align: center;
   margin-bottom: 4rem;
+`;
+
+const ServiceIcon = styled.img`
+  @media ${device.tablet} {
+    width: 100px;
+  }
 `;
 
 const SericeName = styled.h2`
