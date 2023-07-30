@@ -27,6 +27,12 @@
     "Subtitle3": "Quality content",
     "Text3": "We understand how important real images are, we value the time of our clients, so we are working on continuous improvement of media content."
   },
+  "Services": {
+    "Title": "Services",
+    "Consultings": "Consultings",
+    "BuySell": "Buy / Sell",
+    "Rent": "Rent"
+  },
   "Portfolio": {
     "Title": "Portfolio",
     "Area": "Area",

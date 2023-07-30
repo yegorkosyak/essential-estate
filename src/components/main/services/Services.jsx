@@ -5,7 +5,7 @@ import { SectionTitle } from "@styles/components/Title";
 import { theme } from "@styles/utility/global-theme.mjs";
 import { device } from "@styles/utility/media-breakpoints.mjs";
 
-import consulting from "@assets/icons/services/consultant.png";
+import consultings from "@assets/icons/services/consultant.png";
 import property from "@assets/icons/services/property.png";
 import rent from "@assets/icons/services/keys.png";
 
@@ -14,19 +14,21 @@ export default function Services() {
 
   return (
     <ServicesContainer>
-      <SectionTitle color={theme.brandWhite}>Services</SectionTitle>
+      <SectionTitle color={theme.brandWhite}>
+        {t("Services.Title")}
+      </SectionTitle>
       <ServiceList>
         <ServiceWrap>
-          <img src={consulting} alt="" />
-          <SericeName>Consulting</SericeName>
+          <img src={consultings} alt="" />
+          <SericeName>{t("Services.Consultings")}</SericeName>
         </ServiceWrap>
         <ServiceWrap>
           <img src={property} alt="" />
-          <SericeName>Buy / Sell</SericeName>
+          <SericeName>{t("Services.BuySell")}</SericeName>
         </ServiceWrap>
         <ServiceWrap>
           <img src={rent} alt="" />
-          <SericeName>Rent</SericeName>
+          <SericeName>{t("Services.Rent")}</SericeName>
         </ServiceWrap>
       </ServiceList>
     </ServicesContainer>
