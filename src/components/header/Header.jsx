@@ -7,7 +7,7 @@ import { device } from "../../styles/utility/media-breakpoints.mjs";
 import { useTranslation } from "react-i18next";
 import LocaleContext from "../../LocaleContext.js";
 import i18n from "i18next";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link as RouterLink } from "react-router-dom";
 
 import localeIcon from "../../assets/icons/world.png";
 
@@ -37,51 +37,41 @@ export default function Header() {
       document.getElementById(section).scrollIntoView({
         behavior: "smooth",
       });
-    }, 500);
+    }, 1000);
   };
 
   return (
     <ContainerHeader>
-      <LocaleToggle
-        onClick={() => setSelectOpen(!selectOpen)}
-        navOpen={navOpen}
-      >
-        {locale.toUpperCase()}
-        <LocaleIcon src={localeIcon} alt="" />
-        <LocaleSelect selectOpen={selectOpen}>
-          {localeList &&
-            localeList.map((elem, idx) => {
-              let upper = elem.toUpperCase();
-              return (
-                <Locale
-                  key={idx}
-                  onClick={() => {
-                    setLocaleList(fillLocaleSelect(elem));
-                    setLocale(elem);
-                    changeLocale(elem);
-                  }}
-                >
-                  {upper}
-                </Locale>
-              );
-            })}
-        </LocaleSelect>
-      </LocaleToggle>
       <Logo src={logo} alt="" onClick={() => navigate("/")} />
       <Nav>
-        <Link onClick={() => scrollToSection("about")}>
-          {t("Header.About")}
-        </Link>
-        <Link onClick={() => scrollToSection("portfolio")}>
-          {t("Header.Portfolio")}
-        </Link>
-        <Link onClick={() => scrollToSection("agents")}>
-          {t("Header.Agents")}
-        </Link>
-        <ContactLink onClick={() => scrollToSection("contact")}>
-          {t("Header.Contact")}
-        </ContactLink>
+        <LocaleToggle
+          onClick={() => setSelectOpen(!selectOpen)}
+          navOpen={navOpen}
+        >
+          {locale.toUpperCase()}
+          <LocaleIcon src={localeIcon} alt="" />
+          <LocaleSelect selectOpen={selectOpen}>
+            {localeList &&
+              localeList.map((elem, idx) => {
+                let upper = elem.toUpperCase();
+                return (
+                  <Locale
+                    key={idx}
+                    onClick={() => {
+                      setLocaleList(fillLocaleSelect(elem));
+                      setLocale(elem);
+                      changeLocale(elem);
+                    }}
+                  >
+                    {upper}
+                  </Locale>
+                );
+              })}
+          </LocaleSelect>
+        </LocaleToggle>
+        <ContactLink to="/portfolio">{t("Header.Portfolio")}</ContactLink>
       </Nav>
+
       <BurgerButton onClick={() => setNavOpen(!navOpen)} navOpen={navOpen}>
         <BurgerNavWrap navOpen={navOpen}>
           <BurgerDash />
@@ -157,9 +147,7 @@ const ContainerHeader = styled.header`
 const LocaleToggle = styled.span`
   font-size: 1.2rem;
   font-weight: ${(props) => props.theme.weightXLight};
-  position: absolute;
-  top: 40%;
-  left: 30%;
+  position: relative;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -205,7 +193,8 @@ const Nav = styled.ul`
     display: none;
   }
 `;
-const Link = styled.li`
+const Link = styled(RouterLink)`
+  text-decoration: none;
   font-size: 1.5rem;
   font-weight: ${(props) => props.theme.weightXLight};
   cursor: pointer;
@@ -225,6 +214,9 @@ const ContactLink = styled(Link)`
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: -1;
+    &:hover {
+      box-shadow: 0px 0px 40px 20px #ffffff40 inset;
+    }
   }
 `;
 const BurgerButton = styled.div`

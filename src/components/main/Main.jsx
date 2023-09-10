@@ -12,9 +12,9 @@ function Main() {
   return (
     <MainContainer>
       <Hero />
+      <Portfolio />
       <About />
       <Services />
-      <Portfolio />
       <Agents />
       <FeedbackComponent />
       <Contact />

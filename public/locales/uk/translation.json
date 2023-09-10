@@ -47,7 +47,8 @@
     "Description": "Опис",
     "Responsible": "Відповідальний агент",
     "Yes": "Так",
-    "No": "Ні"
+    "No": "Ні",
+    "view": "Переглянути портфоліо"
   },
   "Agents": {
     "Title": "Агенти",
@@ -84,5 +85,18 @@
     "About": "О Нас",
     "Portfolio": "Портфоліо",
     "Agents": "Агенти"
+  },
+  "PortfolioPage": {
+    "title": "ми пропонуємо",
+    "listingType": "Тип лістингу",
+    "estateType": "Тип маєтку",
+    "numberOfRooms": "Кількість кімнат",
+    "area": "Площа м^2",
+    "floor": "Поверх",
+    "price": "Ціна",
+    "from": "Від",
+    "to": "До",
+    "foundOffers": "Кількість знайдених пропозицій",
+    "updatedAt": "Оновлено "
   }
 }

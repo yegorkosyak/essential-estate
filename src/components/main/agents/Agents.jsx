@@ -100,6 +100,7 @@ const Frame = styled.div`
 
 const AgentPhoto = styled.img`
   width: 40%;
+  border-radius: 1vh;
   @media ${device.tablet} {
     width: 50%;
   }

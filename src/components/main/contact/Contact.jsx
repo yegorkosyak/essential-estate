@@ -35,7 +35,6 @@ export default function Contact() {
               <Detail href="https://instagram.com/essential.estate_?igshid=YmMyMTA2M2Y=">
                 Instagram
               </Detail>
-              {/* <Detail href="">Google</Detail> */}
             </DetailWrap>
             <DetailWrap>
               <DetailTitle>{t(`Contact.Email`)}</DetailTitle>
@@ -73,7 +72,7 @@ const ContactSection = styled.section`
 const ContactContainer = styled.div`
   padding: 40px;
   background-color: ${(props) => props.theme.brandBlack};
-  border-radius: 40px;
+  border-radius: 1vh;
   display: grid;
   grid-template-areas:
     "title contact"

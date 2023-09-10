@@ -47,7 +47,8 @@
     "Description": "Description",
     "Responsible": "Responsible Agent",
     "Yes": "Yes",
-    "No": "No"
+    "No": "No",
+    "view": "View Portfolio"
   },
   "Agents": {
     "Title": "Agents",
@@ -84,5 +85,18 @@
     "About": "About",
     "Portfolio": "Portfolio",
     "Agents": "Agents"
+  },
+  "PortfolioPage": {
+    "title": "we offer",
+    "listingType": "Listing type",
+    "estateType": "Estate type",
+    "numberOfRooms": "Nº of rooms",
+    "area": "Area m^2",
+    "floor": "Floor",
+    "price": "Price",
+    "from": "From",
+    "to": "To",
+    "foundOffers": "Number of found offers",
+    "updatedAt": "Updated at "
   }
 }

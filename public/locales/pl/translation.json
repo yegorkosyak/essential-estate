@@ -47,7 +47,8 @@
     "Description": "Opis",
     "Responsible": "Odpowiedzialny Agent",
     "Yes": "Tak",
-    "No": "Nie"
+    "No": "Nie",
+    "view": "Zobacz portfolio"
   },
   "Agents": {
     "Title": "Agenci",
@@ -84,5 +85,18 @@
     "About": "O nas",
     "Portfolio": "Portfolio",
     "Agents": "Agenci"
+  },
+  "PortfolioPage": {
+    "title": "oferujemy",
+    "listingType": "Typ aukcji",
+    "estateType": "Typ nieruchomości",
+    "numberOfRooms": "Liczba pokoi",
+    "area": "Powierzchnia m^2",
+    "floor": "Piętro",
+    "price": "Cena",
+    "from": "Od",
+    "to": "Do",
+    "foundOffers": "Liczba znalezionych ofert",
+    "updatedAt": "Zaktualizowano w dniu "
   }
 }

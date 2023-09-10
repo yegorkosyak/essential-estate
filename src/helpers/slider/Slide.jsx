@@ -8,7 +8,7 @@ export default Slide;
 
 const SlideContainer = styled.div`
   width: ${(props) => props.width}px;
-  height: 300px;
+  height: 350px;
   background-image: url(${(props) => props.content});
   background-size: cover;
   background-repeat: no-repeat;

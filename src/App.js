@@ -11,11 +11,12 @@ import styled, { ThemeProvider } from "styled-components";
 import Header from "./components/header/Header";
 
 import Main from "./components/main/Main";
+import Apartment from "./components/apartments/Apartment";
+import PortfolioPage from "@components/portfolio/PortfolioPage";
 
 import Footer from "./components/footer/Footer";
 
 import { Routes, Route } from "react-router-dom";
-import Apartment from "./components/apartments/Apartment";
 
 function App() {
   const [locale, setLocale] = useState(i18n.language);
@@ -27,6 +28,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/apartments/:apartmentUUID" element={<Apartment />} />
+            <Route path="/portfolio" element={<PortfolioPage />} />
           </Routes>
           <Footer />
         </StyledApp>

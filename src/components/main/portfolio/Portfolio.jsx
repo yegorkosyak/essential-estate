@@ -7,6 +7,7 @@ import { device } from "@styles/utility/media-breakpoints.mjs";
 
 import { useTranslation } from "react-i18next";
 import { useEffect, useRef, useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
 
 import anime from "animejs";
 import axios from "axios";
@@ -50,9 +51,9 @@ export default function Portfolio() {
     axios.get(`${apiUrl}/api/apartments?populate=*`).then(({ data }) => {
       setApartments(data.data);
       setApartmentsByListingType(
-        data.data.filter(
-          (apartments) => apartments.attributes.listing_type === "sale"
-        )
+        data.data
+          .filter((apartments) => apartments.attributes.listing_type === "rent")
+          .slice(0, 3)
       );
     });
 
@@ -65,17 +66,17 @@ export default function Portfolio() {
       switchButton.style.setProperty("--beforeTransform", "100%");
       setTransformed(!transformed);
       setApartmentsByListingType(
-        apartments.filter(
-          (apartments) => apartments.attributes.listing_type === "rent"
-        )
+        apartments
+          .filter((apartments) => apartments.attributes.listing_type === "sale")
+          .slice(0, 3)
       );
     } else {
       switchButton.style.setProperty("--beforeTransform", "0%");
       setTransformed(!transformed);
       setApartmentsByListingType(
-        apartments.filter(
-          (apartments) => apartments.attributes.listing_type === "sale"
-        )
+        apartments
+          .filter((apartments) => apartments.attributes.listing_type === "rent")
+          .slice(0, 3)
       );
     }
   };
@@ -96,8 +97,8 @@ export default function Portfolio() {
           onClick={() => changeSwitchState()}
           transformed={transformed}
         >
-          <span>{t("Portfolio.Sale")}</span>
           <span>{t("Portfolio.Rent")}</span>
+          <span>{t("Portfolio.Sale")}</span>
         </SwitchButton>
         <PortfolioGrid>
           {apartmentsByListingType.map(({ id, attributes }) => (
@@ -114,6 +115,11 @@ export default function Portfolio() {
             />
           ))}
         </PortfolioGrid>
+        <LinkWrap>
+          <MoreLink to="/portfolio" transformed={transformed}>
+            {t("Portfolio.view")}
+          </MoreLink>
+        </LinkWrap>
       </PortfolioContainer>
     </PortfolioSection>
   );
@@ -157,6 +163,7 @@ const PortfolioGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 30px;
+  margin-bottom: 2rem;
   @media ${device.laptopS} {
     grid-template-columns: 1fr 1fr;
   }
@@ -171,7 +178,7 @@ const SwitchButton = styled.div`
   width: max-content;
   height: 3rem;
   margin: 2rem auto;
-  border-radius: 3vh;
+  border-radius: 1vh;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -202,5 +209,29 @@ const SwitchButton = styled.div`
     left: 0;
     transform: translateX(var(--beforeTransform));
     transition: all 500ms;
+  }
+`;
+
+const LinkWrap = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const MoreLink = styled(RouterLink)`
+  color: ${(props) =>
+    props.transformed ? props.theme.brandBlack : props.theme.brandWhite};
+  background-color: ${(props) =>
+    props.transformed ? props.theme.brandWhite : props.theme.brandBlack};
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: ${(props) => props.theme.weightBold};
+  border-radius: 1vh;
+  margin: 2rem;
+  padding: 1rem;
+  &:hover {
+    color: ${(props) =>
+      props.transformed ? props.theme.brandWhite : props.theme.brandBlack};
+    background-color: ${(props) =>
+      props.transformed ? props.theme.brandBlack : props.theme.brandWhite};
   }
 `;

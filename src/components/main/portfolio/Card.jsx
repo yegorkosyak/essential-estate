@@ -14,11 +14,13 @@ export default function Card({
 }) {
   const { t } = useTranslation();
   return (
-    <CardContainer transformed={transformed} onClick={onClick}>
+    <CardContainer transformed={transformed}>
       {/* <CardImage src={image} alt="" /> */}
       <Slider slides={images} />
-      <CardTitle transformed={transformed}>{title}</CardTitle>
-      <CardTable>
+      <CardTitle transformed={transformed} onClick={onClick}>
+        {title}
+      </CardTitle>
+      <CardTable onClick={onClick}>
         <TableBody>
           <TableRow>
             <TableCol transformed={transformed}>
@@ -52,22 +54,26 @@ const CardContainer = styled.div`
   width: 100%;
   background-color: ${(props) =>
     props.transformed ? props.theme.brandWhite : props.theme.brandBlack};
-  border: 5px solid
-    ${(props) =>
-      props.transformed ? props.theme.brandWhite : props.theme.brandBlack};
   box-sizing: border-box;
+  border-radius: 1vh;
 `;
 
-const CardTitle = styled.p`
-  margin-left: 10px;
+const CardTitle = styled.span`
+  display: flex;
+  align-items: center;
+  min-height: 4rem;
+  padding: 1rem;
   color: ${(props) =>
     props.transformed ? props.theme.brandBlack : props.theme.brandWhite};
-  font-weight: ${(props) => props.theme.weightXLight};
+  font-weight: ${(props) => props.theme.weightBold};
   font-size: 1.5rem;
+  cursor: pointer;
 `;
 
 const CardTable = styled.table`
   width: 100%;
+  cursor: pointer;
+  border-spacing: 1rem;
 `;
 
 const TableBody = styled.tbody``;
@@ -86,9 +92,11 @@ const CellName = styled.p`
   margin: 0;
   color: ${(props) => props.theme.brandGrey};
   font-weight: ${(props) => props.theme.weightBold};
+  font-size: 1.2rem;
 `;
 const CellValue = styled.p`
   margin: 0;
   color: ${(props) =>
     props.transformed ? props.theme.brandBlack : props.theme.brandWhite};
+  font-size: 1.2rem;
 `;

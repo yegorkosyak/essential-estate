@@ -85,12 +85,12 @@ export default function Apartment() {
               </CellValue>
             </Cell>
           </DetailsGrid>
-          <ImagesGrid>
+          <ImagesGrid length={apartment.attributes.photos.data.length}>
             {apartment.attributes.photos.data.map((photo) => {
               return (
                 <GridImage
                   key={photo.id}
-                  src={photo.attributes.url}
+                  content={photo.attributes.url}
                   alt="alt"
                   onClick={() => {
                     setModalImage(photo.attributes.url);
@@ -251,19 +251,36 @@ const CellValue = styled.p`
 
 const ImagesGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(${(props) => props.length}, 1fr);
+  grid-template-rows: 1fr;
   gap: 0.5rem;
-  @media ${device.laptopS} {
-    grid-template-columns: 1fr 1fr;
-  }
+
+  overflow-x: scroll;
+
   @media ${device.tabletS} {
     grid-template-columns: 1fr;
   }
+  &::-webkit-scrollbar {
+    width: 1rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #0d0e11;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #f2f1ee;
+    outline: 1px solid #0d0e11;
+  }
 `;
 
-const GridImage = styled.img`
-  width: 100%;
-  height: 100%;
+const GridImage = styled.div`
+  width: 700px;
+  aspect-ratio: 16 / 9;
+  background-image: url(${(props) => props.content});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 
 const BottomDetails = styled.div`

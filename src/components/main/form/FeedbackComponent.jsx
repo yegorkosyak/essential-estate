@@ -144,6 +144,7 @@ const FeedbackGrid = styled.div`
 const TextContent = styled.div`
   color: ${(props) => props.theme.brandBlack};
   padding: 0 4rem;
+
   @media ${device.laptopS} {
     padding: 0 2rem;
   }
@@ -155,13 +156,15 @@ const Text = styled.p`
   background-color: ${(props) => props.theme.brandBlack};
   color: ${(props) => props.theme.brandWhite};
   border: 2px solid ${(props) => props.theme.brandWhite};
-  padding: 0.5rem;
+  padding: 1rem;
+  border-radius: 1vh;
 `;
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   @media ${device.laptopS} {
     margin: 0 2rem;
   }
@@ -173,6 +176,7 @@ const Form = styled.form`
 const FormTable = styled.table`
   border-spacing: unset;
   background-color: ${(props) => props.theme.brandBlack};
+  border-radius: 1vh;
 `;
 
 const Row = styled.tr``;
@@ -211,6 +215,7 @@ const SubmitButton = styled.input`
   border: 1px solid ${(props) => props.theme.brandWhite};
   padding: 1rem 0;
   border-top: unset;
+  border-radius: 0 0 1vh 1vh;
 `;
 
 const SubmittionText = styled.div`

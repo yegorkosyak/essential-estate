@@ -76,7 +76,7 @@ const ImageWrap = styled.div`
   min-width: 60%;
   min-height: 440px;
   background: center/cover no-repeat url(${(props) => props.image});
-  border-radius: 40px;
+  border-radius: 1vh;
   box-shadow: 0px 0px 30px -5px rgba(255, 255, 255, 0.5);
   @media ${device.laptop} {
     min-width: 50%;

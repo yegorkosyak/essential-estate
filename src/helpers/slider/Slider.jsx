@@ -76,7 +76,8 @@ const Slider = ({ slides }) => {
 export default Slider;
 
 const SliderContainer = styled.div`
-  width: calc(26vw - 10px);
+  border-radius: 1vh 1vh 0 0;
+  width: calc(30vw - 10px);
   position: relative;
   margin: 0 auto;
   overflow: hidden;
