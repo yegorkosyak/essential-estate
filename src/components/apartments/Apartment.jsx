@@ -257,9 +257,6 @@ const ImagesGrid = styled.div`
 
   overflow-x: scroll;
 
-  @media ${device.tabletS} {
-    grid-template-columns: 1fr;
-  }
   &::-webkit-scrollbar {
     width: 1rem;
   }
@@ -272,6 +269,11 @@ const ImagesGrid = styled.div`
     background-color: #f2f1ee;
     outline: 1px solid #0d0e11;
   }
+
+  @media ${device.tabletS} {
+    grid-template-columns: 1fr;
+    overflow-x: unset;
+  }
 `;
 
 const GridImage = styled.div`
@@ -281,6 +283,9 @@ const GridImage = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  @media ${device.tabletS} {
+    width: 100%;
+  }
 `;
 
 const BottomDetails = styled.div`

@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import moment from "moment/moment";
 
+import { device } from "@styles/utility/media-breakpoints.mjs";
+
 import Area from "@assets/icons/portfolio/area.png";
 import Floor from "@assets/icons/portfolio/stairs.png";
 import Room from "@assets/icons/portfolio/plot.png";
@@ -69,6 +71,9 @@ const Card = styled.div`
     color: ${(props) => props.theme.brandBlack};
     transition: all 0.6s cubic-bezier(0, 0.55, 0.45, 1);
   }
+  @media ${device.laptop} {
+    flex-direction: column;
+  }
 `;
 
 const Photo = styled.div`
@@ -79,6 +84,13 @@ const Photo = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   margin-right: 1rem;
+  @media ${device.laptop} {
+    margin: 0 auto;
+    margin-bottom: 1rem;
+  }
+  @media ${device.tabletS} {
+    width: 100%;
+  }
 `;
 
 const Content = styled.div`
@@ -92,6 +104,9 @@ const TopBlock = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  @media ${device.laptop} {
+    margin-bottom: 1rem;
+  }
 `;
 
 const BottomBlock = styled.div`
@@ -104,20 +119,34 @@ const TitleWrap = styled.div`
   display: flex;
   place-content: center;
   gap: 1rem;
+  @media ${device.mobileL} {
+    font-size: 1rem;
+    align-items: flex-end;
+  }
 `;
 
 const EstateIcon = styled.img`
   width: 2rem;
+  height: 2rem;
   mix-blend-mode: difference;
 `;
 
 const Title = styled.h3`
   font-size: 2rem;
   margin: 0;
+  @media ${device.tabletS} {
+    font-size: 1.5rem;
+  }
+  @media ${device.mobileL} {
+    font-size: 1rem;
+  }
 `;
 
 const Price = styled.span`
   font-size: 2rem;
+  @media ${device.mobileL} {
+    font-size: 1.2rem;
+  }
 `;
 
 const Details = styled.div``;
@@ -136,4 +165,5 @@ const DetailIcon = styled.img`
 
 const UpdatedAt = styled.span`
   place-self: flex-end;
+  text-align: right;
 `;

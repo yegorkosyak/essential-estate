@@ -12,6 +12,8 @@ import PortfolioCard from "./PortfolioCard";
 import FilterX from "./Filter";
 import RangeFilter from "./RangeFilter";
 
+import { device } from "@styles/utility/media-breakpoints.mjs";
+
 import MountainsBG from "@assets/images/portfolio/mountains.png";
 
 export default function PortfolioPage() {
@@ -154,11 +156,31 @@ const HeroWrap = styled.div`
     color: white;
     font-size: 3rem;
     text-transform: uppercase;
+
+    @media ${device.tablet} {
+      font-size: 2rem;
+      top: 1rem;
+      left: 2rem;
+    }
+    @media ${device.mobileL} {
+      font-size: 1.5rem;
+      left: 1rem;
+    }
+  }
+
+  @media ${device.tablet} {
+    margin-top: 5rem;
+  }
+  @media ${device.mobileL} {
+    margin-top: 2rem;
   }
 `;
 
 const Found = styled.h2`
   color: ${(props) => props.theme.brandWhite};
+  @media ${device.mobileL} {
+    padding-left: 0.5rem;
+  }
 `;
 
 const Grid = styled.div`
@@ -169,5 +191,9 @@ const Grid = styled.div`
 
 const Filters = styled.div`
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+  @media ${device.mobileL} {
+    padding: 0.5rem;
+  }
 `;
